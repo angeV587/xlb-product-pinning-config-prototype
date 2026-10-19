@@ -7,14 +7,16 @@
   <title>商品默认排序配置 · 商品清单版</title>
   <style>
 :root{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#30343c;font-synthesis:none;--blue:#4264ff;--line:#e2e5ed;--muted:#8b93a3;--soft:#eaf1ff;--light:#f7f8fa}
-*{box-sizing:border-box}body{margin:0;background:#f2f3f7;font-size:14px}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}input{height:34px;border:1px solid #dfe3eb;border-radius:4px;padding:0 10px;color:#30343c;min-width:0;background:white}input::placeholder{color:#b5bdca}input:focus{outline:2px solid #c4d2ff;outline-offset:0;border-color:#7090ff}input[type=checkbox]{width:16px;height:16px;padding:0;accent-color:var(--blue);cursor:pointer;vertical-align:middle;flex:none}input[type=datetime-local]{font-size:13px;min-width:0}input:disabled{background:#f6f7fa;color:#b7bdc8}.app-header{height:62px;display:flex;align-items:center;gap:22px;background:var(--blue);color:white;padding:0 20px 0 14px;position:relative;z-index:20}.brand{width:137px;flex:none;display:flex;align-items:center;gap:8px;font-style:italic;font-size:24px;white-space:nowrap}.brand-mark{font-size:48px;line-height:1;transform:rotate(-18deg);display:inline-block}.app-grid{font-size:34px;opacity:.95}.global-search{width:340px;max-width:26vw;height:38px;background:#7992ff;border-radius:5px;font-size:32px;line-height:29px;padding-left:10px;color:#e1e8ff}.header-spacer{flex:1}.header-icon{font-size:25px;color:#f0f4ff}.header-company{font-size:15px;white-space:nowrap}.header-account{font-size:15px;padding-left:20px;border-left:1px solid #8b9eff;line-height:19px;white-space:nowrap}.header-account span{display:block;font-size:11px;opacity:.8}.sidebar{width:162px;position:absolute;left:0;top:62px;bottom:0;background:white;border-right:1px solid #eceef4;min-height:calc(100vh - 62px)}.sidebar-title{height:74px;display:flex;align-items:center;padding-left:20px;font-size:16px}.nav-item{height:66px;display:flex;align-items:center;gap:16px;padding-left:20px;font-size:16px;border-right:4px solid transparent}.nav-item>span{font-size:21px;width:23px;text-align:center;color:#686f79}.nav-item.active{background:#e9f1ff;color:var(--blue);border-right-color:var(--blue)}.nav-item.active>span{color:var(--blue)}.workspace{margin-left:162px;min-height:calc(100vh - 62px)}.tabs{height:46px;display:flex;background:white;border-bottom:1px solid #edf0f5;gap:0}.tab{height:46px;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:15px;border-right:1px solid #eceef5}.tab.selected{border-bottom:3px solid #3297ff}.tab.selected>span{font-size:22px}.sheet{margin:16px;background:white;min-height:calc(100vh - 140px);border-radius:5px;padding:16px 16px 0}.toolbar{display:flex;gap:10px;margin:0 0 34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;border:1px solid transparent;border-radius:4px;padding:6px 15px;white-space:nowrap;font-weight:500;line-height:20px}.btn-soft{background:var(--soft);color:var(--blue)}.btn-soft:hover{background:#dbe8ff}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:#3152ea}.btn-text{color:var(--blue);background:transparent;border-color:transparent;padding-left:10px;padding-right:10px}.btn-text:hover{background:#f4f7ff}.btn:focus-visible,summary:focus-visible,.action-link:focus-visible{outline:2px solid #96b2ff;outline-offset:2px}.toolbar .btn{font-size:15px;padding-left:17px;padding-right:17px}.toolbar .btn>span{font-size:19px;line-height:16px}.section-title{height:36px;line-height:36px;background:#eaf1ff;border-left:4px solid var(--blue);font-size:15px;font-weight:600;margin:0 0 17px;padding-left:13px}.basic-grid{display:grid;grid-template-columns:repeat(4,minmax(185px,1fr));gap:17px 20px;padding:0 4px;align-items:center}.field{display:flex;gap:9px;align-items:center;min-width:0}.field-label{white-space:nowrap;text-align:right;min-width:90px;font-weight:500}.field-label:after{content:"："}.required:before{content:"*";color:#ef5757;padding-right:5px}.field>input,.field>.picker{flex:1;min-width:0;width:100%}.long-term{display:flex;align-items:center;gap:8px;padding-left:99px;white-space:nowrap}.remark-field{grid-column:span 1}.picker{position:relative}.picker summary{list-style:none;display:flex;align-items:center;gap:6px;min-height:34px;border:1px solid #dfe3eb;border-radius:4px;padding:3px 7px;cursor:pointer;background:white}.picker summary::-webkit-details-marker{display:none}.chevron{margin-left:auto;color:#a4adbd;line-height:22px;font-size:16px;flex:none}.picker[open] summary{border-color:#7090ff;box-shadow:0 0 0 2px #e6edff}.tag-list{display:flex;align-items:center;gap:4px;min-height:24px;overflow:hidden;min-width:0;color:#a4adbd;font-size:13px;flex:1}.tag{color:#30343c;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:#f3f4f7;border-radius:3px;padding:2px 5px;line-height:20px;max-width:150px;overflow:hidden;text-overflow:ellipsis}.tag button{border:0;background:none;color:#8d96a6;padding:0 1px;font-size:15px;line-height:16px}.tag-overflow{background:#f3f4f7;color:#505864;border-radius:3px;white-space:nowrap;padding:2px 7px}.picker-pop{position:absolute;top:40px;left:0;min-width:280px;max-width:400px;background:white;box-shadow:0 5px 22px #24355424;border:1px solid #e4e8f0;border-radius:5px;padding:6px;z-index:30}.warehouse-pop{min-width:330px}.picker-title{display:flex;justify-content:space-between;align-items:center;font-weight:600;padding:8px;border-bottom:1px solid #edf0f5;margin-bottom:4px;gap:20px}.picker-title span{font-size:12px;font-weight:400;color:#929aaa}.picker-option{display:flex;align-items:center;gap:9px;padding:10px 8px;cursor:pointer;white-space:nowrap;border-radius:3px}.picker-option:hover{background:#f1f5ff}.picker-option-meta{margin-left:auto;font-size:12px;color:#969eab}.scope-summary{min-height:36px;display:flex;align-items:center;margin:12px 5px 17px;color:#818b9d;font-size:12px;line-height:20px;gap:6px;flex-wrap:wrap}.scope-summary strong{color:#5d6f93;font-weight:500}.scope-warning{color:#dc6c40!important}.product-section{margin-bottom:12px}.product-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:13px}.product-toolbar .btn-primary{font-size:15px}.toolbar-hint{font-size:12px;color:#929baa;margin-left:auto;margin-right:4px}.table-wrap{overflow:auto;border:1px solid var(--line);position:relative}table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left;font-size:13px}th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:40px;padding:9px 12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}th:last-child,td:last-child{border-right:0}th{background:#f8f9fb;font-weight:600;color:#30343c;height:40px;font-size:14px}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafbfd}tbody tr:hover{background:#f1f6ff}.main-table{min-height:362px}.main-table td{height:44px}.empty-state{height:300px;display:flex;justify-content:center;align-items:center;gap:9px;flex-direction:column;color:#a5afbf;font-size:14px}.empty-state[hidden]{display:none}.product-name{font-weight:400}.scope-badge{display:block;color:#dc6c40;font-size:11px;line-height:18px;white-space:normal}.drag-handle{color:#b5bfcd;cursor:grab;font-size:18px;display:inline-flex;align-items:center;justify-content:center;margin-right:11px;background:transparent;border:0;padding:0 3px;height:24px;touch-action:none}.drag-handle:active{cursor:grabbing}.drag-handle:focus-visible{outline:2px solid #8fafff;border-radius:3px}.is-dragging{opacity:.45}.drag-over{box-shadow:inset 0 3px 0 var(--blue);background:#edf3ff!important}.action-link{border:0;background:transparent;color:var(--blue);padding:2px;cursor:pointer;font-size:13px}.action-link:hover{text-decoration:underline}.table-footer{display:flex;justify-content:space-between;align-items:center;height:47px;font-size:12px;color:#7e8999;padding:0 3px}.table-footer strong{font-weight:500;color:#56637b}.list-footnote{font-size:12px;color:#919aaa;padding:18px 3px}dialog{border:0;border-radius:7px;padding:0;width:min(1260px,calc(100vw - 64px));max-width:none;box-shadow:0 13px 55px #1e2b4d30;color:#30343c}dialog::backdrop{background:#0006}.dialog-head{height:60px;border-bottom:1px solid #e1e5ee;padding:0 20px;display:flex;align-items:center;justify-content:space-between}.dialog-head h2{font-size:17px;font-weight:600;margin:0;padding-left:11px;border-left:4px solid var(--blue);line-height:25px}.icon-button{font-size:27px;border:0;color:#a7aebc;background:transparent;cursor:pointer;padding:2px 6px;line-height:32px}.icon-button:hover{color:#5d6b88}.selector-body{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;padding:0 16px;min-height:490px}.selector-panel{border:1px solid #e0e5ee;border-top:0;display:flex;flex-direction:column;min-width:0}.panel-head{height:49px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 15px;border-bottom:1px solid #e0e5ee;font-size:14px}.count-pill{font-size:13px;color:#3688ff;padding:2px 11px;background:#f6f8fb;border:1px solid #e4e8f0;border-radius:4px;line-height:22px}.selector-query{display:flex;align-items:center;gap:7px;padding:16px 12px 10px;white-space:nowrap}.selector-query label{font-size:13px;flex:none}.selector-query input{width:100%;font-size:12px}.selector-query .btn{font-size:13px;padding-left:12px;padding-right:12px;min-height:32px;height:32px}.modal-scope{color:#7d8798;font-size:12px;line-height:19px;padding:0 13px 11px;min-height:38px}.selector-table{margin:0 12px;border:1px solid var(--line);max-height:385px;flex:1;overflow:auto;min-height:160px}.selector-table th{position:sticky;top:0;z-index:1;font-size:12px;height:36px}.selector-table td{font-size:12px;height:36px;padding:7px 8px}.selector-table th{padding:7px 8px}.selector-table th:first-child{text-align:center}.selector-table td:first-child{text-align:center}.selector-bottom{height:39px;font-size:12px;color:#8b94a4;padding:0 13px;display:flex;align-items:center;justify-content:space-between;flex:none}.selector-bottom strong{font-weight:400;color:#526783}.selected-hint{color:#7d8798;font-size:12px;line-height:20px;padding:16px 13px 10px;margin:0;min-height:58px}.selected-panel .selector-table{margin-bottom:14px}.dialog-foot{height:65px;border-top:1px solid #e5e8ef;display:flex;align-items:center;justify-content:flex-end;padding:0 20px;gap:10px;margin-top:12px;background:white}.rule-dialog{width:min(600px,calc(100vw - 40px))}.rule-list{margin:0;padding:22px 28px 12px 48px;font-size:14px;line-height:1.8}.rule-list li{padding-left:4px;margin-bottom:12px}.toast{position:fixed;left:50%;top:95px;transform:translate(-50%,-12px);background:white;border:1px solid #e6eaf3;border-radius:5px;box-shadow:0 5px 22px #23345625;padding:12px 24px;color:#48556b;font-size:14px;z-index:100;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;max-width:calc(100vw - 40px)}.toast.show,.toast.visible,.toast.is-visible{opacity:1;transform:translate(-50%,0)}.empty-row td{text-align:center!important;color:#a0aaba;height:120px;background:white}.empty-row:hover{background:white}.scope-invalid{background:#fffaf4}.scope-invalid:hover{background:#fff5eb}[hidden]{display:none!important}
+*{box-sizing:border-box}body{margin:0;background:#f2f3f7;font-size:14px}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}input{height:34px;border:1px solid #dfe3eb;border-radius:4px;padding:0 10px;color:#30343c;min-width:0;background:white}input::placeholder{color:#b5bdca}input:focus{outline:2px solid #c4d2ff;outline-offset:0;border-color:#7090ff}input[type=checkbox]{width:16px;height:16px;padding:0;accent-color:var(--blue);cursor:pointer;vertical-align:middle;flex:none}input[type=datetime-local]{font-size:13px;min-width:0}input:disabled{background:#f6f7fa;color:#b7bdc8}.app-header{height:62px;display:flex;align-items:center;gap:22px;background:var(--blue);color:white;padding:0 20px 0 14px;position:relative;z-index:20}.brand{width:137px;flex:none;display:flex;align-items:center;gap:8px;font-style:italic;font-size:24px;white-space:nowrap}.brand-mark{font-size:48px;line-height:1;transform:rotate(-18deg);display:inline-block}.app-grid{font-size:34px;opacity:.95}.global-search{width:340px;max-width:26vw;height:38px;background:#7992ff;border-radius:5px;font-size:32px;line-height:29px;padding-left:10px;color:#e1e8ff}.header-spacer{flex:1}.header-icon{font-size:25px;color:#f0f4ff}.header-company{font-size:15px;white-space:nowrap}.header-account{font-size:15px;padding-left:20px;border-left:1px solid #8b9eff;line-height:19px;white-space:nowrap}.header-account span{display:block;font-size:11px;opacity:.8}.sidebar{width:162px;position:absolute;left:0;top:62px;bottom:0;background:white;border-right:1px solid #eceef4;min-height:calc(100vh - 62px)}.sidebar-title{height:74px;display:flex;align-items:center;padding-left:20px;font-size:16px}.nav-item{height:66px;display:flex;align-items:center;gap:16px;padding-left:20px;font-size:16px;border-right:4px solid transparent}.nav-item>span{font-size:21px;width:23px;text-align:center;color:#686f79}.nav-item.active{background:#e9f1ff;color:var(--blue);border-right-color:var(--blue)}.nav-item.active>span{color:var(--blue)}.workspace{margin-left:162px;min-height:calc(100vh - 62px)}.tabs{height:46px;display:flex;background:white;border-bottom:1px solid #edf0f5;gap:0}.tab{height:46px;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:15px;border-right:1px solid #eceef5}.tab.selected{border-bottom:3px solid #3297ff}.tab.selected>span{font-size:22px}.sheet{margin:16px;background:white;min-height:calc(100vh - 140px);border-radius:5px;padding:16px 16px 0}.toolbar{display:flex;gap:10px;margin:0 0 34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;border:1px solid transparent;border-radius:4px;padding:6px 15px;white-space:nowrap;font-weight:500;line-height:20px}.btn-soft{background:var(--soft);color:var(--blue)}.btn-soft:hover{background:#dbe8ff}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:#3152ea}.btn-text{color:var(--blue);background:transparent;border-color:transparent;padding-left:10px;padding-right:10px}.btn-text:hover{background:#f4f7ff}.btn:focus-visible,summary:focus-visible,.action-link:focus-visible{outline:2px solid #96b2ff;outline-offset:2px}.toolbar .btn{font-size:15px;padding-left:17px;padding-right:17px}.toolbar .btn>span{font-size:19px;line-height:16px}.section-title{height:36px;line-height:36px;background:#eaf1ff;border-left:4px solid var(--blue);font-size:15px;font-weight:600;margin:0 0 17px;padding-left:13px}.basic-grid{display:grid;grid-template-columns:repeat(4,minmax(185px,1fr));gap:17px 20px;padding:0 4px;align-items:center}.field{display:flex;gap:9px;align-items:center;min-width:0}.field-label{white-space:nowrap;text-align:right;min-width:90px;font-weight:500}.field-label:after{content:"："}.required:before{content:"*";color:#ef5757;padding-right:5px}.field>input,.field>.picker{flex:1;min-width:0;width:100%}.long-term{display:flex;align-items:center;gap:8px;padding-left:99px;white-space:nowrap}.remark-field{grid-column:span 1}.picker{position:relative}.picker summary{list-style:none;display:flex;align-items:center;gap:6px;min-height:34px;border:1px solid #dfe3eb;border-radius:4px;padding:3px 7px;cursor:pointer;background:white}.picker summary::-webkit-details-marker{display:none}.chevron{margin-left:auto;color:#a4adbd;line-height:22px;font-size:16px;flex:none}.picker[open] summary{border-color:#7090ff;box-shadow:0 0 0 2px #e6edff}.tag-list{display:flex;align-items:center;gap:4px;min-height:24px;overflow:hidden;min-width:0;color:#a4adbd;font-size:13px;flex:1}.tag{color:#30343c;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:#f3f4f7;border-radius:3px;padding:2px 5px;line-height:20px;max-width:150px;overflow:hidden;text-overflow:ellipsis}.tag button{border:0;background:none;color:#8d96a6;padding:0 1px;font-size:15px;line-height:16px}.tag-overflow{background:#f3f4f7;color:#505864;border-radius:3px;white-space:nowrap;padding:2px 7px}.picker-pop{position:absolute;top:40px;left:0;min-width:280px;max-width:400px;background:white;box-shadow:0 5px 22px #24355424;border:1px solid #e4e8f0;border-radius:5px;padding:6px;z-index:30}.warehouse-pop{min-width:330px}.picker-title{display:flex;justify-content:space-between;align-items:center;font-weight:600;padding:8px;border-bottom:1px solid #edf0f5;margin-bottom:4px;gap:20px}.picker-title span{font-size:12px;font-weight:400;color:#929aaa}.picker-option{display:flex;align-items:center;gap:9px;padding:10px 8px;cursor:pointer;white-space:nowrap;border-radius:3px}.picker-option:hover{background:#f1f5ff}.picker-option-meta{margin-left:auto;font-size:12px;color:#969eab}.scope-summary{min-height:36px;display:flex;align-items:center;margin:12px 5px 17px;color:#818b9d;font-size:12px;line-height:20px;gap:6px;flex-wrap:wrap}.scope-summary strong{color:#5d6f93;font-weight:500}.scope-warning{color:#dc6c40!important}.product-section{margin-bottom:12px}.product-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:13px}.product-toolbar .btn-primary{font-size:15px}.toolbar-hint{font-size:12px;color:#929baa;margin-left:auto;margin-right:4px}.table-wrap{overflow:auto;border:1px solid var(--line);position:relative}table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left;font-size:13px}th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:40px;padding:9px 12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}th:last-child,td:last-child{border-right:0}th{background:#f8f9fb;font-weight:600;color:#30343c;height:40px;font-size:14px}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafbfd}tbody tr:hover{background:#f1f6ff}.main-table{min-height:362px}.main-table td{height:44px}.empty-state{height:300px;display:flex;justify-content:center;align-items:center;gap:9px;flex-direction:column;color:#a5afbf;font-size:14px}.empty-state[hidden]{display:none}.product-name{font-weight:400}.drag-handle{color:#b5bfcd;cursor:grab;font-size:18px;display:inline-flex;align-items:center;justify-content:center;margin-right:11px;background:transparent;border:0;padding:0 3px;height:24px;touch-action:none}.drag-handle:active{cursor:grabbing}.drag-handle:focus-visible{outline:2px solid #8fafff;border-radius:3px}.is-dragging{opacity:.45}.drag-over{box-shadow:inset 0 3px 0 var(--blue);background:#edf3ff!important}.action-link{border:0;background:transparent;color:var(--blue);padding:2px;cursor:pointer;font-size:13px}.action-link:hover{text-decoration:underline}.table-footer{display:flex;justify-content:space-between;align-items:center;height:47px;font-size:12px;color:#7e8999;padding:0 3px}.table-footer strong{font-weight:500;color:#56637b}.list-footnote{font-size:12px;color:#919aaa;padding:18px 3px}dialog{border:0;border-radius:7px;padding:0;width:min(1260px,calc(100vw - 64px));max-width:none;box-shadow:0 13px 55px #1e2b4d30;color:#30343c}dialog::backdrop{background:#0006}.dialog-head{height:60px;border-bottom:1px solid #e1e5ee;padding:0 20px;display:flex;align-items:center;justify-content:space-between}.dialog-head h2{font-size:17px;font-weight:600;margin:0;padding-left:11px;border-left:4px solid var(--blue);line-height:25px}.icon-button{font-size:27px;border:0;color:#a7aebc;background:transparent;cursor:pointer;padding:2px 6px;line-height:32px}.icon-button:hover{color:#5d6b88}.selector-body{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;padding:0 16px;min-height:490px}.selector-panel{border:1px solid #e0e5ee;border-top:0;display:flex;flex-direction:column;min-width:0}.panel-head{height:49px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 15px;border-bottom:1px solid #e0e5ee;font-size:14px}.count-pill{font-size:13px;color:#3688ff;padding:2px 11px;background:#f6f8fb;border:1px solid #e4e8f0;border-radius:4px;line-height:22px}.selector-query{display:flex;align-items:center;gap:7px;padding:16px 12px 10px;white-space:nowrap}.selector-query label{font-size:13px;flex:none}.selector-query input{width:100%;font-size:12px}.selector-query .btn{font-size:13px;padding-left:12px;padding-right:12px;min-height:32px;height:32px}.modal-scope{color:#7d8798;font-size:12px;line-height:19px;padding:0 13px 11px;min-height:38px}.selector-table{margin:0 12px;border:1px solid var(--line);max-height:385px;flex:1;overflow:auto;min-height:160px}.selector-table th{position:sticky;top:0;z-index:1;font-size:12px;height:36px}.selector-table td{font-size:12px;height:36px;padding:7px 8px}.selector-table th{padding:7px 8px}.selector-table th:first-child{text-align:center}.selector-table td:first-child{text-align:center}.selector-bottom{height:39px;font-size:12px;color:#8b94a4;padding:0 13px;display:flex;align-items:center;justify-content:space-between;flex:none}.selector-bottom strong{font-weight:400;color:#526783}.selected-hint{color:#7d8798;font-size:12px;line-height:20px;padding:16px 13px 10px;margin:0;min-height:58px}.selected-panel .selector-table{margin-bottom:14px}.dialog-foot{height:65px;border-top:1px solid #e5e8ef;display:flex;align-items:center;justify-content:flex-end;padding:0 20px;gap:10px;margin-top:12px;background:white}.rule-dialog{width:min(600px,calc(100vw - 40px))}.rule-list{margin:0;padding:22px 28px 12px 48px;font-size:14px;line-height:1.8}.rule-list li{padding-left:4px;margin-bottom:12px}.toast{position:fixed;left:50%;top:95px;transform:translate(-50%,-12px);background:white;border:1px solid #e6eaf3;border-radius:5px;box-shadow:0 5px 22px #23345625;padding:12px 24px;color:#48556b;font-size:14px;z-index:100;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;max-width:calc(100vw - 40px)}.toast.show,.toast.visible,.toast.is-visible{opacity:1;transform:translate(-50%,0)}.empty-row td{text-align:center!important;color:#a0aaba;height:120px;background:white}.empty-row:hover{background:white}[hidden]{display:none!important}
 @media(max-width:1650px){.basic-grid{grid-template-columns:repeat(3,minmax(225px,1fr))}.remark-field{grid-column:span 1}.header-icon{display:none}.global-search{width:300px}}
 @media(max-width:1150px){.basic-grid{grid-template-columns:repeat(2,minmax(235px,1fr))}.sidebar{width:140px}.workspace{margin-left:140px}.sidebar-title{font-size:14px;padding-left:14px}.nav-item{font-size:14px;padding-left:16px;gap:12px}.app-header{gap:17px}.brand{width:117px;font-size:21px}.brand-mark{font-size:40px}.header-company{font-size:12px}.selector-body{gap:10px;padding:0 10px}.selector-query{flex-wrap:wrap}.selector-query input{flex:1;min-width:130px}.selector-table{margin-left:8px;margin-right:8px}.selector-query .btn{padding-left:9px;padding-right:9px}}
 @media(max-width:760px){.sidebar{width:76px}.sidebar-title{font-size:11px;padding:0 6px;justify-content:center}.nav-item{font-size:12px;justify-content:center;padding:0;height:54px}.nav-item>span{display:none}.workspace{margin-left:76px}.sheet{margin:8px;padding:12px 10px 0}.brand{width:auto;font-size:19px}.brand-mark{font-size:34px}.app-grid,.global-search,.header-company{display:none}.app-header{padding-right:12px;gap:10px}.header-account{font-size:13px}.basic-grid{grid-template-columns:1fr;gap:13px}.long-term{padding-left:99px}.toolbar{margin-bottom:22px}.toolbar-hint{font-size:11px}.main-table table{min-width:760px}dialog{width:calc(100vw - 22px)}.selector-body{grid-template-columns:1fr;max-height:65vh;overflow:auto}.selector-panel{min-height:270px}.selected-panel{border-top:1px solid #e0e5ee}.selector-table{max-height:240px;min-height:160px;flex:none}.selector-table table{min-width:430px}.picker-pop{min-width:250px;max-width:calc(100vw - 145px)}.dialog-head{height:54px;padding:0 13px}.dialog-foot{height:58px}.selected-hint{min-height:48px}.tab{font-size:13px;padding:0 12px}.table-footer{font-size:11px}.scope-summary{margin-top:14px}.product-toolbar{gap:6px}.btn{padding-left:12px;padding-right:12px}.rule-list{font-size:13px}}
 
-.picker-help{font-size:12px;color:#8b95a5;line-height:20px;padding:8px}.scope-note{display:block;color:#919aaa;font-size:12px;width:100%}.out-of-scope{background:#fffaf4}.toast.is-error{color:#b94f30;border-color:#f1d7cb}.order-cell{display:flex;align-items:center;gap:3px}
+.picker-help{font-size:12px;color:#8b95a5;line-height:20px;padding:8px}.scope-note{display:block;color:#919aaa;font-size:12px;width:100%}.toast.is-error{color:#b94f30;border-color:#f1d7cb}.order-cell{display:flex;align-items:center;gap:3px}
 
 .brand svg.brand-mark{width:48px;height:40px;transform:none;flex:none}.nav-icon{width:23px;height:23px;fill:none;stroke:#707780;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}.nav-item.active .nav-icon{stroke:var(--blue)}@media(max-width:760px){.nav-icon{display:none}.brand svg.brand-mark{width:33px;height:30px}}
+
+.scope-requirement{font-size:12px;color:#7b8698;line-height:20px;margin:13px 5px 0}.picker.is-locked summary{background:#f5f6f8;border-color:#e2e5eb;cursor:not-allowed;box-shadow:none}.picker.is-locked .tag,.picker.is-locked .tag-overflow{background:#e9ecf1;color:#6f7785}.picker.is-locked .chevron{color:#bdc4cf}.picker.is-locked .picker-pop{display:none}.picker.is-locked summary:focus{outline:none}.picker.is-locked .tag-list{color:#929baa}.scope-summary{margin-top:5px}
 
 </style>
 </head>
@@ -49,17 +51,18 @@
       <h2 class="section-title">基础信息</h2>
       <div class="basic-grid">
         <label class="field"><span class="field-label required">配置名称</span><input id="configName" autocomplete="off" maxlength="60" placeholder="请输入配置名称"></label>
-        <div class="field"><span class="field-label required" id="orgLabel">二级组织</span>
+        <div class="field"><span class="field-label" id="orgLabel">二级组织</span>
           <details class="picker" id="orgPicker"><summary aria-labelledby="orgLabel"><span class="tag-list" id="orgTags"></span><span class="chevron" aria-hidden="true">▾</span></summary><div class="picker-pop"><div class="picker-title">选择二级组织<span>支持多选</span></div><div id="orgOptions"></div></div></details>
         </div>
-        <div class="field"><span class="field-label" id="warehouseLabel">配送中心</span>
-          <details class="picker" id="warehousePicker"><summary aria-labelledby="warehouseLabel"><span class="tag-list" id="warehouseTags"></span><span class="chevron" aria-hidden="true">⌕</span></summary><div class="picker-pop warehouse-pop"><div class="picker-title">选择配送中心<span>未选表示全部</span></div><div id="warehouseOptions"></div></div></details>
+        <div class="field"><span class="field-label" id="warehouseLabel">配送中心门店</span>
+          <details class="picker" id="warehousePicker"><summary aria-labelledby="warehouseLabel"><span class="tag-list" id="warehouseTags"></span><span class="chevron" aria-hidden="true">⌕</span></summary><div class="picker-pop warehouse-pop"><div class="picker-title">选择配送中心门店<span>支持多选</span></div><div id="warehouseOptions"></div></div></details>
         </div>
         <label class="field"><span class="field-label required">生效开始时间</span><input id="startDate" type="datetime-local"></label>
         <label class="field"><span class="field-label">生效结束时间</span><input id="endDate" type="datetime-local"></label>
         <label class="long-term"><input id="longTerm" type="checkbox">长期有效</label>
         <label class="field remark-field"><span class="field-label">备注</span><input id="remark" autocomplete="off" maxlength="200" placeholder="请输入备注"></label>
       </div>
+      <div class="scope-requirement" id="scopeRequirementHint">二级组织、配送中心门店至少填写一项；有置顶商品时锁定，清空商品后可修改。</div>
       <div class="scope-summary" id="scopeSummary" aria-live="polite"></div>
 
       <h2 class="section-title product-section">置顶商品</h2>
@@ -72,7 +75,7 @@
     </section>
     <section class="sheet" id="listView" hidden aria-label="商品默认排序配置列表">
       <h2 class="section-title">商品默认排序配置</h2>
-      <div class="table-wrap"><table aria-label="当前配置"><thead><tr><th>配置名称</th><th>二级组织</th><th>配送中心</th><th>置顶商品数</th><th>生效时间</th><th>操作</th></tr></thead><tbody id="configListBody"></tbody></table></div>
+      <div class="table-wrap"><table aria-label="当前配置"><thead><tr><th>配置名称</th><th>二级组织</th><th>配送中心门店</th><th>置顶商品数</th><th>生效时间</th><th>操作</th></tr></thead><tbody id="configListBody"></tbody></table></div>
       <div class="list-footnote">当前演示配置使用虚构组织、配送中心和商品。</div>
     </section>
   </main>
@@ -98,7 +101,7 @@
 
   <dialog id="ruleModal" class="rule-dialog" aria-labelledby="ruleTitle">
     <div class="dialog-head"><h2 id="ruleTitle">排序规则</h2><button class="icon-button" id="closeRuleBtn" aria-label="关闭排序规则">×</button></div>
-    <ol class="rule-list"><li>配送中心未选择时，配置应用于所选组织下的全部配送中心门店；已选择时，仅应用于所选配送中心门店。</li><li>添加商品时，可选范围取上述配送中心门店可选商品的并集，同一商品仅展示一次。</li><li>配置内按商品统一维护置顶顺序，拖动行首手柄调整。分类页从清单中取出属于当前分类、且当前门店可见的商品，按清单顺序优先展示。</li><li>非置顶商品沿用 ABC 等级、门店近 30 天销售额 PSD 等现有默认排序规则。</li><li>特价、端堆等特殊专区沿用各自的既有排序规则。</li><li>新建、编辑统一商品配置或转换历史配置保存时，若与其他新、旧配置在任一配送中心的生效时段重叠，提示冲突并阻止保存。</li><li>历史分类配置继续按原规则生效；编辑时核对转换后的统一商品清单和顺序，保存成功后才转换。取消或保存失败保留原配置。</li></ol>
+    <ol class="rule-list"><li>二级组织、配送中心门店至少选择一项，允许同时填写；两项都为空时不能添加商品或保存。</li><li>组织为空时，可从账号有权限的所有组织下选择配送中心门店；有组织时，可选范围限定为这些组织下的门店。只选组织表示其全部配送中心门店；已选配送中心门店时，仅应用于所选门店。</li><li>主清单中有置顶商品时，组织和配送中心门店均不可编辑；清空全部置顶商品后恢复编辑。弹窗中未确认的选择不改变字段锁定状态。</li><li>添加商品时，可选范围取上述配送中心门店可选商品的并集，同一商品仅展示一次。</li><li>配置内按商品统一维护置顶顺序，拖动行首手柄调整。分类页从清单中取出属于当前分类、且当前门店可见的商品，按清单顺序优先展示。</li><li>非置顶商品沿用 ABC 等级、门店近 30 天销售额 PSD 等现有默认排序规则。</li><li>特价、端堆等特殊专区沿用各自的既有排序规则。</li><li>新建、编辑统一商品配置或转换历史配置保存时，若与其他新、旧配置在任一配送中心的生效时段重叠，提示冲突并阻止保存。</li><li>历史分类配置继续按原规则生效；编辑时核对转换后的统一商品清单和顺序，保存成功后才转换。取消或保存失败保留原配置。</li></ol>
     <div class="dialog-foot"><button class="btn btn-primary" id="ruleDoneBtn">知道了</button></div>
   </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
@@ -132,7 +135,7 @@
     { id: 'P12', code: '34020012', name: '冻干酸奶块', spec: '60g/袋', unit: '袋', warehouseIds: ['w4'] },
   ];
 
-  const STORAGE_KEY = 'xlb-product-pin-prototype-v2-20261019';
+  const STORAGE_KEY = 'xlb-product-pin-prototype-v3-20261019';
   const productById = new Map(PRODUCTS.map((product) => [product.id, product]));
   const warehouseById = new Map(WAREHOUSES.map((warehouse) => [warehouse.id, warehouse]));
   const orgById = new Map(ORGANIZATIONS.map((organization) => [organization.id, organization]));
@@ -154,10 +157,10 @@
 
   function computeScope(orgIds, selectedWarehouseIds) {
     const validOrgIds = unique(orgIds).filter((id) => orgById.has(id));
-    const warehouseCandidates = WAREHOUSES.filter((warehouse) => validOrgIds.includes(warehouse.orgId));
+    const warehouseCandidates = WAREHOUSES.filter((warehouse) => !validOrgIds.length || validOrgIds.includes(warehouse.orgId));
     const candidateIds = new Set(warehouseCandidates.map((warehouse) => warehouse.id));
     const explicitWarehouseIds = unique(selectedWarehouseIds).filter((id) => candidateIds.has(id));
-    const actualWarehouseIds = explicitWarehouseIds.length ? explicitWarehouseIds : warehouseCandidates.map((warehouse) => warehouse.id);
+    const actualWarehouseIds = explicitWarehouseIds.length ? explicitWarehouseIds : validOrgIds.length ? warehouseCandidates.map((warehouse) => warehouse.id) : [];
     const actualIdSet = new Set(actualWarehouseIds);
     const availableProducts = PRODUCTS.filter((product) => product.warehouseIds.some((id) => actualIdSet.has(id)));
     const rawProductCount = actualWarehouseIds.reduce((count, id) => count + PRODUCTS.filter((product) => product.warehouseIds.includes(id)).length, 0);
@@ -191,14 +194,11 @@
 
   function validateState(value) {
     if (!value.configName.trim()) return { field: 'configName', message: '请填写配置名称。' };
-    if (!value.orgIds.length) return { field: 'orgPicker', message: '请至少选择一个二级组织。' };
+    if (!value.orgIds.length && !value.warehouseIds.length) return { field: 'orgPicker', message: '二级组织与配送中心门店至少选择一项，也可以同时选择。' };
     if (!value.startDate) return { field: 'startDate', message: '请选择生效开始时间。' };
     if (!value.longTerm && !value.endDate) return { field: 'endDate', message: '请选择生效结束时间，或勾选长期有效。' };
     if (!value.longTerm && value.endDate < value.startDate) return { field: 'endDate', message: '生效结束时间不能早于开始时间。' };
     if (!value.productIds.length) return { field: 'addProductsBtn', message: '请至少添加一个置顶商品。' };
-    const availableIds = new Set(computeScope(value.orgIds, value.warehouseIds).availableProducts.map((product) => product.id));
-    const invalidCount = value.productIds.filter((id) => !availableIds.has(id)).length;
-    if (invalidCount) return { field: 'productRows', message: `有 ${invalidCount} 个商品超出当前范围，请先移除后保存。` };
     return null;
   }
 
@@ -212,6 +212,23 @@
 
   function getScope() {
     return computeScope(state.orgIds, state.warehouseIds);
+  }
+
+  function isScopeLocked() {
+    return state.productIds.length > 0;
+  }
+
+  function syncScopeLock() {
+    const locked = isScopeLocked();
+    for (const picker of [elements.orgPicker, elements.warehousePicker]) {
+      picker.classList.toggle('is-locked', locked);
+      picker.setAttribute('aria-disabled', String(locked));
+      const summary = picker.querySelector('summary');
+      summary.setAttribute('aria-disabled', String(locked));
+      summary.tabIndex = locked ? -1 : 0;
+      picker.querySelectorAll('input[type="checkbox"]').forEach((input) => { input.disabled = locked; });
+      if (locked) picker.open = false;
+    }
   }
 
   function loadSavedState() {
@@ -250,29 +267,29 @@
 
   function renderPickers() {
     const scope = getScope();
-    elements.orgOptions.innerHTML = ORGANIZATIONS.map((organization) => `<label class="picker-option"><input type="checkbox" data-org-id="${organization.id}" ${state.orgIds.includes(organization.id) ? 'checked' : ''}><span>${organization.name}</span><span class="picker-option-meta">${WAREHOUSES.filter((warehouse) => warehouse.orgId === organization.id).length} 个配送中心</span></label>`).join('');
+    elements.orgOptions.innerHTML = ORGANIZATIONS.map((organization) => `<label class="picker-option"><input type="checkbox" data-org-id="${organization.id}" ${state.orgIds.includes(organization.id) ? 'checked' : ''}><span>${organization.name}</span><span class="picker-option-meta">${WAREHOUSES.filter((warehouse) => warehouse.orgId === organization.id).length} 个配送中心门店</span></label>`).join('');
     elements.orgTags.innerHTML = tagsHTML(state.orgIds, orgById, '请选择二级组织，可多选');
     elements.warehouseOptions.innerHTML = scope.warehouseCandidates.length
-      ? `<div class="picker-help">不选择时，适用已选组织的全部配送中心</div>${scope.warehouseCandidates.map((warehouse) => `<label class="picker-option"><input type="checkbox" data-warehouse-id="${warehouse.id}" ${state.warehouseIds.includes(warehouse.id) ? 'checked' : ''}><span>${warehouse.name}</span><span class="picker-option-meta">${orgById.get(warehouse.orgId).name}</span></label>`).join('')}`
-      : '<div class="picker-help">请先选择二级组织</div>';
-    elements.warehouseTags.innerHTML = tagsHTML(state.warehouseIds, warehouseById, '全部配送中心（可按需选择）');
+      ? `<div class="picker-help">${state.orgIds.length ? '不选择时，适用已选组织的全部配送中心门店' : '可直接选择配送中心门店，也可先选组织缩小范围'}</div>${scope.warehouseCandidates.map((warehouse) => `<label class="picker-option"><input type="checkbox" data-warehouse-id="${warehouse.id}" ${state.warehouseIds.includes(warehouse.id) ? 'checked' : ''}><span>${warehouse.name}</span><span class="picker-option-meta">${orgById.get(warehouse.orgId).name}</span></label>`).join('')}`
+      : '<div class="picker-help">暂无可选配送中心门店</div>';
+    elements.warehouseTags.innerHTML = tagsHTML(state.warehouseIds, warehouseById, state.orgIds.length ? '全部配送中心门店（可按需选择）' : '请选择配送中心门店，可多选');
     const warehouseNames = scope.actualWarehouseIds.map((id) => warehouseById.get(id).name).join('、');
-    elements.scopeSummary.innerHTML = state.orgIds.length
-      ? `<strong>当前适用范围：</strong>${escapeHTML(state.orgIds.map((id) => orgById.get(id).name).join('、'))} / ${escapeHTML(warehouseNames)}<span class="scope-note">${state.warehouseIds.length ? '仅适用已明确选择的配送中心门店' : '未指定配送中心，适用所选组织下全部配送中心门店'}；选品范围为这些配送中心门店可选商品的并集，按商品去重。</span>`
-      : '<span class="scope-warning">请先选择二级组织，确定适用范围后添加商品。</span>';
+    const organizationNames = state.orgIds.map((id) => orgById.get(id).name).join('、');
+    elements.scopeSummary.innerHTML = scope.actualWarehouseIds.length
+      ? `<strong>当前适用范围：</strong>${organizationNames ? `${escapeHTML(organizationNames)} / ` : ''}${escapeHTML(warehouseNames)}<span class="scope-note">${state.warehouseIds.length ? '仅适用已明确选择的配送中心门店' : '未指定配送中心门店，适用所选组织下全部配送中心门店'}；选品范围为这些配送中心门店可选商品的并集，按商品去重。</span>`
+      : '<span class="scope-warning">二级组织与配送中心门店至少选择一项，再添加商品。</span>';
+    syncScopeLock();
   }
 
   function renderProducts() {
-    const validIds = new Set(getScope().availableProducts.map((product) => product.id));
-    const invalidCount = state.productIds.filter((id) => !validIds.has(id)).length;
     elements.productRows.innerHTML = state.productIds.map((id, index) => {
       const product = productById.get(id);
-      const invalid = !validIds.has(id);
-      return `<tr data-product-id="${id}" draggable="true" tabindex="0" class="${invalid ? 'out-of-scope' : ''}" aria-label="第 ${index + 1} 位，${escapeHTML(product.name)}。按 Alt 加上下方向键调整顺序。"><td><span class="order-cell"><span class="drag-handle" aria-hidden="true">⠿</span><span>${index + 1}</span></span></td><td>${product.code}</td><td><span class="product-name">${product.name}</span>${invalid ? '<span class="scope-badge">超出当前范围</span>' : ''}</td><td>${product.spec}</td><td>${product.unit}</td><td><button type="button" class="action-link remove-link" data-remove-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
+      return `<tr data-product-id="${id}" draggable="true" tabindex="0" aria-label="第 ${index + 1} 位，${escapeHTML(product.name)}。按 Alt 加上下方向键调整顺序。"><td><span class="order-cell"><span class="drag-handle" aria-hidden="true">⠿</span><span>${index + 1}</span></span></td><td>${product.code}</td><td><span class="product-name">${product.name}</span></td><td>${product.spec}</td><td>${product.unit}</td><td><button type="button" class="action-link remove-link" data-remove-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
     }).join('');
     elements.productEmpty.hidden = state.productIds.length > 0;
-    elements.productCount.innerHTML = `共 <strong>${state.productIds.length}</strong> 个商品${invalidCount ? `<span class="scope-warning">，${invalidCount} 个超出当前范围，请移除后保存</span>` : ''}`;
-    elements.addProductsBtn.disabled = !state.orgIds.length;
+    elements.productCount.innerHTML = `共 <strong>${state.productIds.length}</strong> 个商品`;
+    elements.addProductsBtn.disabled = !state.orgIds.length && !state.warehouseIds.length;
+    syncScopeLock();
   }
 
   function syncFieldsFromState() {
@@ -293,8 +310,8 @@
   }
 
   function renderConfigList() {
-    const organizationNames = state.orgIds.map((id) => orgById.get(id).name).join('、') || '未选择';
-    const warehouseNames = state.warehouseIds.length ? state.warehouseIds.map((id) => warehouseById.get(id).name).join('、') : '全部';
+    const organizationNames = state.orgIds.map((id) => orgById.get(id).name).join('、') || '未指定';
+    const warehouseNames = state.warehouseIds.length ? state.warehouseIds.map((id) => warehouseById.get(id).name).join('、') : state.orgIds.length ? '全部（所选组织）' : '未指定';
     const dateLabel = (value) => value ? value.replace('T', ' ') : '未填写';
     const dateRange = `${dateLabel(state.startDate)} 至 ${state.longTerm ? '长期有效' : dateLabel(state.endDate)}`;
     elements.configListBody.innerHTML = `<tr><td>${escapeHTML(state.configName || '未命名配置')}</td><td>${escapeHTML(organizationNames)}</td><td>${escapeHTML(warehouseNames)}</td><td>${state.productIds.length}</td><td>${escapeHTML(dateRange)}</td><td><button id="editCurrentBtn" type="button" class="action-link">编辑</button></td></tr>`;
@@ -303,9 +320,6 @@
   function handleScopeChange() {
     render();
     persistDraft();
-    if (state.productIds.some((id) => !getScope().availableProducts.some((product) => product.id === id))) {
-      showToast('范围已更新，超出当前范围的商品已保留并标记，请移除后保存。', 'error');
-    }
   }
 
   function filteredProducts() {
@@ -316,7 +330,6 @@
   function renderModal() {
     const scope = getScope();
     const available = filteredProducts();
-    const validIds = new Set(scope.availableProducts.map((product) => product.id));
     const draftSet = new Set(modalDraftIds);
     elements.availableRows.innerHTML = available.length
       ? available.map((product) => `<tr><td><input type="checkbox" data-select-product="${product.id}" ${draftSet.has(product.id) ? 'checked' : ''} aria-label="选择${escapeHTML(product.name)}"></td><td>${product.code}</td><td title="${product.name}">${product.name}</td><td>${product.spec}</td><td>${product.unit}</td></tr>`).join('')
@@ -324,7 +337,7 @@
     elements.selectedRows.innerHTML = modalDraftIds.length
       ? modalDraftIds.map((id, index) => {
         const product = productById.get(id);
-        return `<tr><td>${index + 1}</td><td>${product.code}</td><td title="${product.name}">${product.name}${!validIds.has(id) ? '<span class="scope-badge">超出当前范围</span>' : ''}</td><td><button type="button" class="action-link remove-link" data-unselect-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
+        return `<tr><td>${index + 1}</td><td>${product.code}</td><td title="${product.name}">${product.name}</td><td><button type="button" class="action-link remove-link" data-unselect-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
       }).join('')
       : '<tr class="empty-row"><td colspan="4">请从左侧勾选商品</td></tr>';
     elements.availableCount.textContent = `${available.length} 个`;
@@ -338,7 +351,7 @@
   }
 
   function openProductsModal() {
-    if (!state.orgIds.length) return showToast('请先选择二级组织。', 'error');
+    if (!state.orgIds.length && !state.warehouseIds.length) return showToast('二级组织与配送中心门店至少选择一项。', 'error');
     modalDraftIds = [...state.productIds];
     activeQuery = '';
     elements.productQuery.value = '';
@@ -380,18 +393,34 @@
       elements.endDate.disabled = state.longTerm;
       persistDraft();
     });
+    for (const picker of [elements.orgPicker, elements.warehousePicker]) {
+      const summary = picker.querySelector('summary');
+      summary.addEventListener('click', (event) => {
+        if (!isScopeLocked()) return;
+        event.preventDefault();
+        event.stopPropagation();
+      });
+      summary.addEventListener('keydown', (event) => {
+        if (!isScopeLocked() || !['Enter', ' ', 'ArrowDown', 'ArrowUp'].includes(event.key)) return;
+        event.preventDefault();
+        event.stopPropagation();
+      });
+      picker.addEventListener('toggle', () => { if (isScopeLocked() && picker.open) picker.open = false; });
+    }
     elements.orgOptions.addEventListener('change', (event) => {
       const input = event.target.closest('[data-org-id]');
       if (!input) return;
+      if (isScopeLocked()) { event.preventDefault(); renderPickers(); return; }
       const previousWarehouses = [...state.warehouseIds];
       state.orgIds = input.checked ? unique([...state.orgIds, input.dataset.orgId]) : state.orgIds.filter((id) => id !== input.dataset.orgId);
       state.warehouseIds = computeScope(state.orgIds, state.warehouseIds).explicitWarehouseIds;
       handleScopeChange();
-      if (previousWarehouses.length && !state.warehouseIds.length && state.orgIds.length) showToast('已移除不属于所选组织的配送中心；当前适用所选组织下全部配送中心。');
+      if (previousWarehouses.length && !state.warehouseIds.length && state.orgIds.length) showToast('已移除不属于所选组织的配送中心门店；当前适用所选组织下全部配送中心门店。');
     });
     elements.warehouseOptions.addEventListener('change', (event) => {
       const input = event.target.closest('[data-warehouse-id]');
       if (!input) return;
+      if (isScopeLocked()) { event.preventDefault(); renderPickers(); return; }
       state.warehouseIds = input.checked ? unique([...state.warehouseIds, input.dataset.warehouseId]) : state.warehouseIds.filter((id) => id !== input.dataset.warehouseId);
       handleScopeChange();
     });
@@ -407,9 +436,9 @@
     elements.confirmProductsBtn.addEventListener('click', () => {
       state.productIds = [...modalDraftIds];
       persistDraft();
-      renderProducts();
+      render();
       elements.productModal.close();
-      showToast(`已更新 ${state.productIds.length} 个置顶商品，可拖动调整顺序。`);
+      showToast(state.productIds.length ? `已更新 ${state.productIds.length} 个置顶商品，范围字段已锁定。` : '已清空置顶商品，组织和配送中心门店可重新编辑。');
     });
     const applyQuery = () => { activeQuery = elements.productQuery.value; renderModal(); };
     elements.queryBtn.addEventListener('click', applyQuery);
@@ -437,7 +466,7 @@
       if (!button) return;
       state.productIds = state.productIds.filter((id) => id !== button.dataset.removeProduct);
       persistDraft();
-      renderProducts();
+      render();
     });
     elements.productRows.addEventListener('keydown', (event) => {
       const row = event.target.closest('[data-product-id]');
@@ -490,7 +519,6 @@
       if (error) {
         showToast(error.message, 'error');
         if (error.field === 'orgPicker') { elements.orgPicker.open = true; elements.orgPicker.querySelector('summary').focus(); }
-        else if (error.field === 'productRows') elements.productRows.querySelector('.out-of-scope')?.focus();
         else elements[error.field]?.focus();
         return;
       }
@@ -524,6 +552,7 @@
       return this.getState();
     },
     getState: () => JSON.parse(JSON.stringify(state)),
+    isScopeLocked,
     getAvailableProducts: () => getScope().availableProducts.map((product) => ({ ...product, warehouseIds: [...product.warehouseIds] })),
     computeScope: (orgIds, warehouseIds) => computeScope(orgIds, warehouseIds),
     test: Object.freeze({ computeScope, moveItem, normalizeState, validateState, defaultState }),
