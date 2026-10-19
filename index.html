@@ -98,7 +98,7 @@
 
   <dialog id="ruleModal" class="rule-dialog" aria-labelledby="ruleTitle">
     <div class="dialog-head"><h2 id="ruleTitle">排序规则</h2><button class="icon-button" id="closeRuleBtn" aria-label="关闭排序规则">×</button></div>
-    <ol class="rule-list"><li>配送中心未选择时，配置应用于所选组织下的全部配送中心门店；已选择时，仅应用于所选配送中心门店。</li><li>添加商品时，可选范围取上述配送中心门店可选商品的并集，同一商品仅展示一次。</li><li>配置内按商品统一维护置顶顺序，拖动行首手柄调整。分类页从清单中取出属于当前分类、且当前门店可见的商品，按清单顺序优先展示。</li><li>非置顶商品沿用 ABC 等级、门店近 30 天销售额 PSD 等现有默认排序规则。</li><li>特价、端堆等特殊专区沿用各自的既有排序规则。</li></ol>
+    <ol class="rule-list"><li>配送中心未选择时，配置应用于所选组织下的全部配送中心门店；已选择时，仅应用于所选配送中心门店。</li><li>添加商品时，可选范围取上述配送中心门店可选商品的并集，同一商品仅展示一次。</li><li>配置内按商品统一维护置顶顺序，拖动行首手柄调整。分类页从清单中取出属于当前分类、且当前门店可见的商品，按清单顺序优先展示。</li><li>非置顶商品沿用 ABC 等级、门店近 30 天销售额 PSD 等现有默认排序规则。</li><li>特价、端堆等特殊专区沿用各自的既有排序规则。</li><li>新建、编辑统一商品配置或转换历史配置保存时，若与其他新、旧配置在任一配送中心的生效时段重叠，提示冲突并阻止保存。</li><li>历史分类配置继续按原规则生效；编辑时核对转换后的统一商品清单和顺序，保存成功后才转换。取消或保存失败保留原配置。</li></ol>
     <div class="dialog-foot"><button class="btn btn-primary" id="ruleDoneBtn">知道了</button></div>
   </dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
