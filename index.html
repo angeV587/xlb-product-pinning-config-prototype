@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="商品置顶配置交互原型：多组织、配送中心范围、并集去重选品及拖动排序。全部为虚构演示数据。">
+  <title>商品默认排序配置 · 商品清单版</title>
+  <style>
+:root{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:#30343c;font-synthesis:none;--blue:#4264ff;--line:#e2e5ed;--muted:#8b93a3;--soft:#eaf1ff;--light:#f7f8fa}
+*{box-sizing:border-box}body{margin:0;background:#f2f3f7;font-size:14px}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.5}input{height:34px;border:1px solid #dfe3eb;border-radius:4px;padding:0 10px;color:#30343c;min-width:0;background:white}input::placeholder{color:#b5bdca}input:focus{outline:2px solid #c4d2ff;outline-offset:0;border-color:#7090ff}input[type=checkbox]{width:16px;height:16px;padding:0;accent-color:var(--blue);cursor:pointer;vertical-align:middle;flex:none}input[type=datetime-local]{font-size:13px;min-width:0}input:disabled{background:#f6f7fa;color:#b7bdc8}.app-header{height:62px;display:flex;align-items:center;gap:22px;background:var(--blue);color:white;padding:0 20px 0 14px;position:relative;z-index:20}.brand{width:137px;flex:none;display:flex;align-items:center;gap:8px;font-style:italic;font-size:24px;white-space:nowrap}.brand-mark{font-size:48px;line-height:1;transform:rotate(-18deg);display:inline-block}.app-grid{font-size:34px;opacity:.95}.global-search{width:340px;max-width:26vw;height:38px;background:#7992ff;border-radius:5px;font-size:32px;line-height:29px;padding-left:10px;color:#e1e8ff}.header-spacer{flex:1}.header-icon{font-size:25px;color:#f0f4ff}.header-company{font-size:15px;white-space:nowrap}.header-account{font-size:15px;padding-left:20px;border-left:1px solid #8b9eff;line-height:19px;white-space:nowrap}.header-account span{display:block;font-size:11px;opacity:.8}.sidebar{width:162px;position:absolute;left:0;top:62px;bottom:0;background:white;border-right:1px solid #eceef4;min-height:calc(100vh - 62px)}.sidebar-title{height:74px;display:flex;align-items:center;padding-left:20px;font-size:16px}.nav-item{height:66px;display:flex;align-items:center;gap:16px;padding-left:20px;font-size:16px;border-right:4px solid transparent}.nav-item>span{font-size:21px;width:23px;text-align:center;color:#686f79}.nav-item.active{background:#e9f1ff;color:var(--blue);border-right-color:var(--blue)}.nav-item.active>span{color:var(--blue)}.workspace{margin-left:162px;min-height:calc(100vh - 62px)}.tabs{height:46px;display:flex;background:white;border-bottom:1px solid #edf0f5;gap:0}.tab{height:46px;display:flex;align-items:center;gap:18px;padding:0 20px;font-size:15px;border-right:1px solid #eceef5}.tab.selected{border-bottom:3px solid #3297ff}.tab.selected>span{font-size:22px}.sheet{margin:16px;background:white;min-height:calc(100vh - 140px);border-radius:5px;padding:16px 16px 0}.toolbar{display:flex;gap:10px;margin:0 0 34px}.btn{display:inline-flex;align-items:center;justify-content:center;gap:5px;min-height:34px;border:1px solid transparent;border-radius:4px;padding:6px 15px;white-space:nowrap;font-weight:500;line-height:20px}.btn-soft{background:var(--soft);color:var(--blue)}.btn-soft:hover{background:#dbe8ff}.btn-primary{background:var(--blue);color:white}.btn-primary:hover{background:#3152ea}.btn-text{color:var(--blue);background:transparent;border-color:transparent;padding-left:10px;padding-right:10px}.btn-text:hover{background:#f4f7ff}.btn:focus-visible,summary:focus-visible,.action-link:focus-visible{outline:2px solid #96b2ff;outline-offset:2px}.toolbar .btn{font-size:15px;padding-left:17px;padding-right:17px}.toolbar .btn>span{font-size:19px;line-height:16px}.section-title{height:36px;line-height:36px;background:#eaf1ff;border-left:4px solid var(--blue);font-size:15px;font-weight:600;margin:0 0 17px;padding-left:13px}.basic-grid{display:grid;grid-template-columns:repeat(4,minmax(185px,1fr));gap:17px 20px;padding:0 4px;align-items:center}.field{display:flex;gap:9px;align-items:center;min-width:0}.field-label{white-space:nowrap;text-align:right;min-width:90px;font-weight:500}.field-label:after{content:"："}.required:before{content:"*";color:#ef5757;padding-right:5px}.field>input,.field>.picker{flex:1;min-width:0;width:100%}.long-term{display:flex;align-items:center;gap:8px;padding-left:99px;white-space:nowrap}.remark-field{grid-column:span 1}.picker{position:relative}.picker summary{list-style:none;display:flex;align-items:center;gap:6px;min-height:34px;border:1px solid #dfe3eb;border-radius:4px;padding:3px 7px;cursor:pointer;background:white}.picker summary::-webkit-details-marker{display:none}.chevron{margin-left:auto;color:#a4adbd;line-height:22px;font-size:16px;flex:none}.picker[open] summary{border-color:#7090ff;box-shadow:0 0 0 2px #e6edff}.tag-list{display:flex;align-items:center;gap:4px;min-height:24px;overflow:hidden;min-width:0;color:#a4adbd;font-size:13px;flex:1}.tag{color:#30343c;display:inline-flex;align-items:center;gap:5px;white-space:nowrap;background:#f3f4f7;border-radius:3px;padding:2px 5px;line-height:20px;max-width:150px;overflow:hidden;text-overflow:ellipsis}.tag button{border:0;background:none;color:#8d96a6;padding:0 1px;font-size:15px;line-height:16px}.tag-overflow{background:#f3f4f7;color:#505864;border-radius:3px;white-space:nowrap;padding:2px 7px}.picker-pop{position:absolute;top:40px;left:0;min-width:280px;max-width:400px;background:white;box-shadow:0 5px 22px #24355424;border:1px solid #e4e8f0;border-radius:5px;padding:6px;z-index:30}.warehouse-pop{min-width:330px}.picker-title{display:flex;justify-content:space-between;align-items:center;font-weight:600;padding:8px;border-bottom:1px solid #edf0f5;margin-bottom:4px;gap:20px}.picker-title span{font-size:12px;font-weight:400;color:#929aaa}.picker-option{display:flex;align-items:center;gap:9px;padding:10px 8px;cursor:pointer;white-space:nowrap;border-radius:3px}.picker-option:hover{background:#f1f5ff}.picker-option-meta{margin-left:auto;font-size:12px;color:#969eab}.scope-summary{min-height:36px;display:flex;align-items:center;margin:12px 5px 17px;color:#818b9d;font-size:12px;line-height:20px;gap:6px;flex-wrap:wrap}.scope-summary strong{color:#5d6f93;font-weight:500}.scope-warning{color:#dc6c40!important}.product-section{margin-bottom:12px}.product-toolbar{display:flex;align-items:center;gap:10px;margin-bottom:13px}.product-toolbar .btn-primary{font-size:15px}.toolbar-hint{font-size:12px;color:#929baa;margin-left:auto;margin-right:4px}.table-wrap{overflow:auto;border:1px solid var(--line);position:relative}table{border-collapse:collapse;width:100%;table-layout:fixed;text-align:left;font-size:13px}th,td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);height:40px;padding:9px 12px;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}th:last-child,td:last-child{border-right:0}th{background:#f8f9fb;font-weight:600;color:#30343c;height:40px;font-size:14px}tbody tr:last-child td{border-bottom:0}tbody tr:nth-child(even){background:#fafbfd}tbody tr:hover{background:#f1f6ff}.main-table{min-height:362px}.main-table td{height:44px}.empty-state{height:300px;display:flex;justify-content:center;align-items:center;gap:9px;flex-direction:column;color:#a5afbf;font-size:14px}.empty-state[hidden]{display:none}.product-name{font-weight:400}.scope-badge{display:block;color:#dc6c40;font-size:11px;line-height:18px;white-space:normal}.drag-handle{color:#b5bfcd;cursor:grab;font-size:18px;display:inline-flex;align-items:center;justify-content:center;margin-right:11px;background:transparent;border:0;padding:0 3px;height:24px;touch-action:none}.drag-handle:active{cursor:grabbing}.drag-handle:focus-visible{outline:2px solid #8fafff;border-radius:3px}.is-dragging{opacity:.45}.drag-over{box-shadow:inset 0 3px 0 var(--blue);background:#edf3ff!important}.action-link{border:0;background:transparent;color:var(--blue);padding:2px;cursor:pointer;font-size:13px}.action-link:hover{text-decoration:underline}.table-footer{display:flex;justify-content:space-between;align-items:center;height:47px;font-size:12px;color:#7e8999;padding:0 3px}.table-footer strong{font-weight:500;color:#56637b}.list-footnote{font-size:12px;color:#919aaa;padding:18px 3px}dialog{border:0;border-radius:7px;padding:0;width:min(1260px,calc(100vw - 64px));max-width:none;box-shadow:0 13px 55px #1e2b4d30;color:#30343c}dialog::backdrop{background:#0006}.dialog-head{height:60px;border-bottom:1px solid #e1e5ee;padding:0 20px;display:flex;align-items:center;justify-content:space-between}.dialog-head h2{font-size:17px;font-weight:600;margin:0;padding-left:11px;border-left:4px solid var(--blue);line-height:25px}.icon-button{font-size:27px;border:0;color:#a7aebc;background:transparent;cursor:pointer;padding:2px 6px;line-height:32px}.icon-button:hover{color:#5d6b88}.selector-body{display:grid;grid-template-columns:1.15fr 1fr;gap:16px;padding:0 16px;min-height:490px}.selector-panel{border:1px solid #e0e5ee;border-top:0;display:flex;flex-direction:column;min-width:0}.panel-head{height:49px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 15px;border-bottom:1px solid #e0e5ee;font-size:14px}.count-pill{font-size:13px;color:#3688ff;padding:2px 11px;background:#f6f8fb;border:1px solid #e4e8f0;border-radius:4px;line-height:22px}.selector-query{display:flex;align-items:center;gap:7px;padding:16px 12px 10px;white-space:nowrap}.selector-query label{font-size:13px;flex:none}.selector-query input{width:100%;font-size:12px}.selector-query .btn{font-size:13px;padding-left:12px;padding-right:12px;min-height:32px;height:32px}.modal-scope{color:#7d8798;font-size:12px;line-height:19px;padding:0 13px 11px;min-height:38px}.selector-table{margin:0 12px;border:1px solid var(--line);max-height:385px;flex:1;overflow:auto;min-height:160px}.selector-table th{position:sticky;top:0;z-index:1;font-size:12px;height:36px}.selector-table td{font-size:12px;height:36px;padding:7px 8px}.selector-table th{padding:7px 8px}.selector-table th:first-child{text-align:center}.selector-table td:first-child{text-align:center}.selector-bottom{height:39px;font-size:12px;color:#8b94a4;padding:0 13px;display:flex;align-items:center;justify-content:space-between;flex:none}.selector-bottom strong{font-weight:400;color:#526783}.selected-hint{color:#7d8798;font-size:12px;line-height:20px;padding:16px 13px 10px;margin:0;min-height:58px}.selected-panel .selector-table{margin-bottom:14px}.dialog-foot{height:65px;border-top:1px solid #e5e8ef;display:flex;align-items:center;justify-content:flex-end;padding:0 20px;gap:10px;margin-top:12px;background:white}.rule-dialog{width:min(600px,calc(100vw - 40px))}.rule-list{margin:0;padding:22px 28px 12px 48px;font-size:14px;line-height:1.8}.rule-list li{padding-left:4px;margin-bottom:12px}.toast{position:fixed;left:50%;top:95px;transform:translate(-50%,-12px);background:white;border:1px solid #e6eaf3;border-radius:5px;box-shadow:0 5px 22px #23345625;padding:12px 24px;color:#48556b;font-size:14px;z-index:100;opacity:0;pointer-events:none;transition:opacity .15s,transform .15s;max-width:calc(100vw - 40px)}.toast.show,.toast.visible,.toast.is-visible{opacity:1;transform:translate(-50%,0)}.empty-row td{text-align:center!important;color:#a0aaba;height:120px;background:white}.empty-row:hover{background:white}.scope-invalid{background:#fffaf4}.scope-invalid:hover{background:#fff5eb}[hidden]{display:none!important}
+@media(max-width:1650px){.basic-grid{grid-template-columns:repeat(3,minmax(225px,1fr))}.remark-field{grid-column:span 1}.header-icon{display:none}.global-search{width:300px}}
+@media(max-width:1150px){.basic-grid{grid-template-columns:repeat(2,minmax(235px,1fr))}.sidebar{width:140px}.workspace{margin-left:140px}.sidebar-title{font-size:14px;padding-left:14px}.nav-item{font-size:14px;padding-left:16px;gap:12px}.app-header{gap:17px}.brand{width:117px;font-size:21px}.brand-mark{font-size:40px}.header-company{font-size:12px}.selector-body{gap:10px;padding:0 10px}.selector-query{flex-wrap:wrap}.selector-query input{flex:1;min-width:130px}.selector-table{margin-left:8px;margin-right:8px}.selector-query .btn{padding-left:9px;padding-right:9px}}
+@media(max-width:760px){.sidebar{width:76px}.sidebar-title{font-size:11px;padding:0 6px;justify-content:center}.nav-item{font-size:12px;justify-content:center;padding:0;height:54px}.nav-item>span{display:none}.workspace{margin-left:76px}.sheet{margin:8px;padding:12px 10px 0}.brand{width:auto;font-size:19px}.brand-mark{font-size:34px}.app-grid,.global-search,.header-company{display:none}.app-header{padding-right:12px;gap:10px}.header-account{font-size:13px}.basic-grid{grid-template-columns:1fr;gap:13px}.long-term{padding-left:99px}.toolbar{margin-bottom:22px}.toolbar-hint{font-size:11px}.main-table table{min-width:760px}dialog{width:calc(100vw - 22px)}.selector-body{grid-template-columns:1fr;max-height:65vh;overflow:auto}.selector-panel{min-height:270px}.selected-panel{border-top:1px solid #e0e5ee}.selector-table{max-height:240px;min-height:160px;flex:none}.selector-table table{min-width:430px}.picker-pop{min-width:250px;max-width:calc(100vw - 145px)}.dialog-head{height:54px;padding:0 13px}.dialog-foot{height:58px}.selected-hint{min-height:48px}.tab{font-size:13px;padding:0 12px}.table-footer{font-size:11px}.scope-summary{margin-top:14px}.product-toolbar{gap:6px}.btn{padding-left:12px;padding-right:12px}.rule-list{font-size:13px}}
+
+.picker-help{font-size:12px;color:#8b95a5;line-height:20px;padding:8px}.scope-note{display:block;color:#919aaa;font-size:12px;width:100%}.out-of-scope{background:#fffaf4}.toast.is-error{color:#b94f30;border-color:#f1d7cb}.order-cell{display:flex;align-items:center;gap:3px}
+
+.brand svg.brand-mark{width:48px;height:40px;transform:none;flex:none}.nav-icon{width:23px;height:23px;fill:none;stroke:#707780;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none}.nav-item.active .nav-icon{stroke:var(--blue)}@media(max-width:760px){.nav-icon{display:none}.brand svg.brand-mark{width:33px;height:30px}}
+
+</style>
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand"><svg class="brand-mark" viewBox="0 0 54 43" aria-hidden="true"><path d="M2 39C15 7 35-3 52 8C38 3 24 14 16 30H38L29 39Z" fill="currentColor"/></svg><strong>新零帮</strong></div>
+    <span class="app-grid" aria-hidden="true">⠿</span>
+    <div class="global-search" aria-hidden="true">⌕</div>
+    <div class="header-spacer"></div>
+    <span class="header-icon" aria-hidden="true">♙</span><span class="header-icon" aria-hidden="true">♧</span>
+    <span class="header-company">示例企业 — 管理中心⌄</span>
+    <span class="header-account">演示账号<span>全部为虚构数据</span></span>
+  </header>
+
+  <aside class="sidebar" aria-label="主导航">
+    <div class="sidebar-title">ERP连锁管理</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="m6 14 4-4 4 2 4-5M8 21l2-3m6 3-2-3"/></svg>看板</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><rect x="3" y="4" width="18" height="14" rx="1"/><path d="m6 14 4-4 4 2 4-5M8 21l2-3m6 3-2-3"/></svg>看板（新）</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M3 8h7l2 3h9v10H3zM4 3h16v5H4z"/></svg>档案</div>
+    <div class="nav-item active"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M2 7h12v11H2zM14 11h4l4 5v2h-8M14 15h7"/><circle cx="6" cy="19" r="2"/><circle cx="18" cy="19" r="2"/></svg>配送</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M2 3h3l3 13h11l3-9H6M8 20h1m8 0h1"/><circle cx="9" cy="20" r="1"/><circle cx="18" cy="20" r="1"/></svg>采购</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M3 8 12 3l9 5v13H3zM3 8l9 5 9-5M12 13v8M7 5l9 5"/></svg>库存</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M5 7h14l-1 14H6zM8 7V5a4 4 0 0 1 8 0v2M3 7h18"/></svg>零售</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M3 3v18h18M7 17v-5m5 5V7m5 10V4"/></svg>数据</div>
+    <div class="nav-item"><svg viewBox="0 0 24 24" aria-hidden="true" class="nav-icon"><path d="M3 8 12 3l9 5v13H3zM3 8l9 5 9-5M12 13v8M7 5l9 5"/></svg>价格</div>
+  </aside>
+
+  <main class="workspace">
+    <nav class="tabs" aria-label="已打开页面"><span class="tab">ERP看板</span><span class="tab selected">商品默认排序配置 <span aria-hidden="true">×</span></span></nav>
+    <section class="sheet" id="detailView" aria-label="编辑商品置顶配置">
+      <div class="toolbar"><button class="btn btn-soft" id="saveBtn"><svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h14l3 3v15H3V3zm3 0v7h10V3M7 21v-7h10v7"/></svg> 保存</button><button class="btn btn-soft" id="backBtn"><span aria-hidden="true">↶</span> 返回</button></div>
+      <h2 class="section-title">基础信息</h2>
+      <div class="basic-grid">
+        <label class="field"><span class="field-label required">配置名称</span><input id="configName" autocomplete="off" maxlength="60" placeholder="请输入配置名称"></label>
+        <div class="field"><span class="field-label required" id="orgLabel">二级组织</span>
+          <details class="picker" id="orgPicker"><summary aria-labelledby="orgLabel"><span class="tag-list" id="orgTags"></span><span class="chevron" aria-hidden="true">▾</span></summary><div class="picker-pop"><div class="picker-title">选择二级组织<span>支持多选</span></div><div id="orgOptions"></div></div></details>
+        </div>
+        <div class="field"><span class="field-label" id="warehouseLabel">配送中心</span>
+          <details class="picker" id="warehousePicker"><summary aria-labelledby="warehouseLabel"><span class="tag-list" id="warehouseTags"></span><span class="chevron" aria-hidden="true">⌕</span></summary><div class="picker-pop warehouse-pop"><div class="picker-title">选择配送中心<span>未选表示全部</span></div><div id="warehouseOptions"></div></div></details>
+        </div>
+        <label class="field"><span class="field-label required">生效开始时间</span><input id="startDate" type="datetime-local"></label>
+        <label class="field"><span class="field-label">生效结束时间</span><input id="endDate" type="datetime-local"></label>
+        <label class="long-term"><input id="longTerm" type="checkbox">长期有效</label>
+        <label class="field remark-field"><span class="field-label">备注</span><input id="remark" autocomplete="off" maxlength="200" placeholder="请输入备注"></label>
+      </div>
+      <div class="scope-summary" id="scopeSummary" aria-live="polite"></div>
+
+      <h2 class="section-title product-section">置顶商品</h2>
+      <div class="product-toolbar"><button class="btn btn-primary" id="addProductsBtn"><span aria-hidden="true">＋</span> 添加商品</button><button class="btn btn-text" id="ruleBtn">排序规则</button><span class="toolbar-hint">拖动行首手柄调整商品顺序</span></div>
+      <div class="table-wrap main-table">
+        <table aria-label="置顶商品列表"><colgroup><col style="width:100px"><col style="width:155px"><col><col style="width:185px"><col style="width:90px"><col style="width:100px"></colgroup><thead><tr><th scope="col">排序</th><th scope="col">商品代码</th><th scope="col">商品名称</th><th scope="col">规格</th><th scope="col">单位</th><th scope="col">操作</th></tr></thead><tbody id="productRows"></tbody></table>
+        <div class="empty-state" id="productEmpty"><svg viewBox="0 0 72 58" width="72" height="58" aria-hidden="true"><path d="M15 19h42v31H15z" fill="#f0f3f8" stroke="#d9dfeb"/><path d="m15 19 10-11h22l10 11M15 19l21 12 21-12M36 31v19" fill="none" stroke="#d9dfeb" stroke-width="2"/></svg><span>请添加商品</span></div>
+      </div>
+      <div class="table-footer"><span id="productCount">共 0 个商品</span><span>商品按列表顺序优先展示</span></div>
+    </section>
+    <section class="sheet" id="listView" hidden aria-label="商品默认排序配置列表">
+      <h2 class="section-title">商品默认排序配置</h2>
+      <div class="table-wrap"><table aria-label="当前配置"><thead><tr><th>配置名称</th><th>二级组织</th><th>配送中心</th><th>置顶商品数</th><th>生效时间</th><th>操作</th></tr></thead><tbody id="configListBody"></tbody></table></div>
+      <div class="list-footnote">当前演示配置使用虚构组织、配送中心和商品。</div>
+    </section>
+  </main>
+
+  <dialog id="productModal" aria-labelledby="productModalTitle">
+    <div class="dialog-head"><h2 id="productModalTitle">添加商品</h2><button class="icon-button" id="closeProductsBtn" aria-label="关闭添加商品弹窗">×</button></div>
+    <div class="selector-body">
+      <section class="selector-panel available-panel" aria-label="可选商品">
+        <div class="panel-head"><strong>可选商品</strong><span class="count-pill" id="availableCount">0 个</span></div>
+        <div class="selector-query"><label for="productQuery">商品代码/名称</label><input id="productQuery" placeholder="请输入商品代码或商品名称" autocomplete="off"><button class="btn btn-soft" id="queryBtn">查询</button><button class="btn btn-primary" id="resetQueryBtn">重置</button></div>
+        <div class="modal-scope" id="modalScopeSummary"></div>
+        <div class="selector-table table-wrap"><table aria-label="可选商品表"><colgroup><col style="width:40px"><col style="width:105px"><col><col style="width:105px"><col style="width:55px"></colgroup><thead><tr><th><input type="checkbox" id="selectAllAvailable" aria-label="选择当前查询结果全部商品"></th><th>商品代码</th><th>商品名称</th><th>规格</th><th>单位</th></tr></thead><tbody id="availableRows"></tbody></table></div>
+        <div class="selector-bottom"><span id="checkedCount">已选中 0 条</span><span>相同商品仅展示一次</span></div>
+      </section>
+      <section class="selector-panel selected-panel" aria-label="已选商品">
+        <div class="panel-head"><strong>已选商品</strong><span class="count-pill" id="selectedCount">0 个</span></div>
+        <p class="selected-hint">确认后添加至商品清单，在清单中拖动调整顺序。</p>
+        <div class="selector-table table-wrap"><table aria-label="已选商品表"><colgroup><col style="width:55px"><col style="width:105px"><col><col style="width:65px"></colgroup><thead><tr><th>序号</th><th>商品代码</th><th>商品名称</th><th>操作</th></tr></thead><tbody id="selectedRows"></tbody></table></div>
+      </section>
+    </div>
+    <div class="dialog-foot"><button class="btn btn-soft" id="cancelProductsBtn">取消</button><button class="btn btn-primary" id="confirmProductsBtn">确定</button></div>
+  </dialog>
+
+  <dialog id="ruleModal" class="rule-dialog" aria-labelledby="ruleTitle">
+    <div class="dialog-head"><h2 id="ruleTitle">排序规则</h2><button class="icon-button" id="closeRuleBtn" aria-label="关闭排序规则">×</button></div>
+    <ol class="rule-list"><li>配送中心未选择时，配置应用于所选组织下的全部配送中心门店；已选择时，仅应用于所选配送中心门店。</li><li>添加商品时，可选范围取上述配送中心门店可选商品的并集，同一商品仅展示一次。</li><li>配置内按商品统一维护置顶顺序，拖动行首手柄调整。分类页从清单中取出属于当前分类、且当前门店可见的商品，按清单顺序优先展示。</li><li>非置顶商品沿用 ABC 等级、门店近 30 天销售额 PSD 等现有默认排序规则。</li><li>特价、端堆等特殊专区沿用各自的既有排序规则。</li></ol>
+    <div class="dialog-foot"><button class="btn btn-primary" id="ruleDoneBtn">知道了</button></div>
+  </dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script>
+(() => {
+  'use strict';
+
+  // 演示数据均为虚构，不对应实际组织、配送中心或商品。
+  const ORGANIZATIONS = [
+    { id: 'o1', name: '示例组织一' },
+    { id: 'o2', name: '示例组织二' },
+  ];
+  const WAREHOUSES = [
+    { id: 'w1', name: '示例一仓', orgId: 'o1' },
+    { id: 'w2', name: '示例二仓', orgId: 'o1' },
+    { id: 'w3', name: '示例三仓', orgId: 'o2' },
+    { id: 'w4', name: '示例四仓', orgId: 'o2' },
+  ];
+  const PRODUCTS = [
+    { id: 'P1', code: '34020001', name: '奶香曲奇饼干', spec: '200g/袋', unit: '袋', warehouseIds: ['w1', 'w2', 'w4'] },
+    { id: 'P2', code: '34020002', name: '原味苏打饼干', spec: '300g/袋', unit: '袋', warehouseIds: ['w1', 'w3'] },
+    { id: 'P3', code: '34020003', name: '海盐巧克力', spec: '80g/盒', unit: '盒', warehouseIds: ['w1', 'w2'] },
+    { id: 'P4', code: '34020004', name: '草莓夹心棉花糖', spec: '100g/袋', unit: '袋', warehouseIds: ['w1'] },
+    { id: 'P5', code: '34020005', name: '香脆薯片', spec: '75g/罐', unit: '罐', warehouseIds: ['w1', 'w2', 'w3'] },
+    { id: 'P6', code: '34020006', name: '轻烘焙每日坚果', spec: '25g×7袋/盒', unit: '盒', warehouseIds: ['w2'] },
+    { id: 'P7', code: '34020007', name: '蜂蜜燕麦片', spec: '350g/袋', unit: '袋', warehouseIds: ['w2', 'w3'] },
+    { id: 'P8', code: '34020008', name: '青柠气泡水', spec: '330ml/罐', unit: '罐', warehouseIds: ['w3', 'w4'] },
+    { id: 'P9', code: '34020009', name: '白桃乌龙茶', spec: '500ml/瓶', unit: '瓶', warehouseIds: ['w3'] },
+    { id: 'P10', code: '34020010', name: '香辣小麻花', spec: '180g/袋', unit: '袋', warehouseIds: ['w4'] },
+    { id: 'P11', code: '34020011', name: '椰香蛋卷', spec: '150g/盒', unit: '盒', warehouseIds: ['w4'] },
+    { id: 'P12', code: '34020012', name: '冻干酸奶块', spec: '60g/袋', unit: '袋', warehouseIds: ['w4'] },
+  ];
+
+  const STORAGE_KEY = 'xlb-product-pin-prototype-v2-20261019';
+  const productById = new Map(PRODUCTS.map((product) => [product.id, product]));
+  const warehouseById = new Map(WAREHOUSES.map((warehouse) => [warehouse.id, warehouse]));
+  const orgById = new Map(ORGANIZATIONS.map((organization) => [organization.id, organization]));
+  const unique = (values) => [...new Set(values)];
+  const escapeHTML = (value) => String(value ?? '').replace(/[&<>"']/g, (character) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
+
+  function defaultState() {
+    return {
+      configName: '重点商品置顶',
+      orgIds: ['o1'],
+      warehouseIds: ['w1', 'w2'],
+      startDate: '2026-10-19T00:00',
+      endDate: '',
+      longTerm: true,
+      remark: '',
+      productIds: ['P1', 'P3'],
+    };
+  }
+
+  function computeScope(orgIds, selectedWarehouseIds) {
+    const validOrgIds = unique(orgIds).filter((id) => orgById.has(id));
+    const warehouseCandidates = WAREHOUSES.filter((warehouse) => validOrgIds.includes(warehouse.orgId));
+    const candidateIds = new Set(warehouseCandidates.map((warehouse) => warehouse.id));
+    const explicitWarehouseIds = unique(selectedWarehouseIds).filter((id) => candidateIds.has(id));
+    const actualWarehouseIds = explicitWarehouseIds.length ? explicitWarehouseIds : warehouseCandidates.map((warehouse) => warehouse.id);
+    const actualIdSet = new Set(actualWarehouseIds);
+    const availableProducts = PRODUCTS.filter((product) => product.warehouseIds.some((id) => actualIdSet.has(id)));
+    const rawProductCount = actualWarehouseIds.reduce((count, id) => count + PRODUCTS.filter((product) => product.warehouseIds.includes(id)).length, 0);
+    return { validOrgIds, warehouseCandidates, explicitWarehouseIds, actualWarehouseIds, availableProducts, rawProductCount };
+  }
+
+  function moveItem(productIds, fromId, toId, position = 'before') {
+    if (fromId === toId || !productIds.includes(fromId) || !productIds.includes(toId)) return [...productIds];
+    const result = productIds.filter((id) => id !== fromId);
+    const targetIndex = result.indexOf(toId) + (position === 'after' ? 1 : 0);
+    result.splice(targetIndex, 0, fromId);
+    return result;
+  }
+
+  function normalizeState(raw) {
+    const fallback = defaultState();
+    if (!raw || typeof raw !== 'object') return fallback;
+    const orgIds = Array.isArray(raw.orgIds) ? unique(raw.orgIds).filter((id) => orgById.has(id)) : fallback.orgIds;
+    const scope = computeScope(orgIds, Array.isArray(raw.warehouseIds) ? raw.warehouseIds : []);
+    return {
+      configName: typeof raw.configName === 'string' ? raw.configName : fallback.configName,
+      orgIds,
+      warehouseIds: scope.explicitWarehouseIds,
+      startDate: typeof raw.startDate === 'string' ? raw.startDate : fallback.startDate,
+      endDate: typeof raw.endDate === 'string' ? raw.endDate : '',
+      longTerm: typeof raw.longTerm === 'boolean' ? raw.longTerm : true,
+      remark: typeof raw.remark === 'string' ? raw.remark : '',
+      productIds: Array.isArray(raw.productIds) ? unique(raw.productIds).filter((id) => productById.has(id)) : fallback.productIds,
+    };
+  }
+
+  function validateState(value) {
+    if (!value.configName.trim()) return { field: 'configName', message: '请填写配置名称。' };
+    if (!value.orgIds.length) return { field: 'orgPicker', message: '请至少选择一个二级组织。' };
+    if (!value.startDate) return { field: 'startDate', message: '请选择生效开始时间。' };
+    if (!value.longTerm && !value.endDate) return { field: 'endDate', message: '请选择生效结束时间，或勾选长期有效。' };
+    if (!value.longTerm && value.endDate < value.startDate) return { field: 'endDate', message: '生效结束时间不能早于开始时间。' };
+    if (!value.productIds.length) return { field: 'addProductsBtn', message: '请至少添加一个置顶商品。' };
+    const availableIds = new Set(computeScope(value.orgIds, value.warehouseIds).availableProducts.map((product) => product.id));
+    const invalidCount = value.productIds.filter((id) => !availableIds.has(id)).length;
+    if (invalidCount) return { field: 'productRows', message: `有 ${invalidCount} 个商品超出当前范围，请先移除后保存。` };
+    return null;
+  }
+
+  let state = defaultState();
+  let modalDraftIds = [];
+  let activeQuery = '';
+  let dragId = null;
+  let toastTimer;
+  let initialized = false;
+  let elements = {};
+
+  function getScope() {
+    return computeScope(state.orgIds, state.warehouseIds);
+  }
+
+  function loadSavedState() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) state = normalizeState(JSON.parse(raw));
+    } catch (_) {
+      state = defaultState();
+    }
+  }
+
+  function persistDraft() {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    } catch (_) {
+      // 浏览器限制本地存储时，页面仍可完整演示。
+    }
+  }
+
+  function showToast(message, type = 'success') {
+    if (!elements.toast) return;
+    clearTimeout(toastTimer);
+    elements.toast.textContent = message;
+    elements.toast.className = `toast is-visible ${type === 'error' ? 'is-error' : ''}`;
+    elements.toast.setAttribute('role', type === 'error' ? 'alert' : 'status');
+    toastTimer = setTimeout(() => {
+      elements.toast.classList.remove('is-visible');
+    }, 4500);
+  }
+
+  function tagsHTML(ids, lookup, emptyText) {
+    if (!ids.length) return `<span class="picker-placeholder">${escapeHTML(emptyText)}</span>`;
+    const first = lookup.get(ids[0]);
+    return `<span class="tag">${escapeHTML(first.name)}</span>${ids.length > 1 ? `<span class="tag tag-overflow">+${ids.length - 1}</span>` : ''}`;
+  }
+
+  function renderPickers() {
+    const scope = getScope();
+    elements.orgOptions.innerHTML = ORGANIZATIONS.map((organization) => `<label class="picker-option"><input type="checkbox" data-org-id="${organization.id}" ${state.orgIds.includes(organization.id) ? 'checked' : ''}><span>${organization.name}</span><span class="picker-option-meta">${WAREHOUSES.filter((warehouse) => warehouse.orgId === organization.id).length} 个配送中心</span></label>`).join('');
+    elements.orgTags.innerHTML = tagsHTML(state.orgIds, orgById, '请选择二级组织，可多选');
+    elements.warehouseOptions.innerHTML = scope.warehouseCandidates.length
+      ? `<div class="picker-help">不选择时，适用已选组织的全部配送中心</div>${scope.warehouseCandidates.map((warehouse) => `<label class="picker-option"><input type="checkbox" data-warehouse-id="${warehouse.id}" ${state.warehouseIds.includes(warehouse.id) ? 'checked' : ''}><span>${warehouse.name}</span><span class="picker-option-meta">${orgById.get(warehouse.orgId).name}</span></label>`).join('')}`
+      : '<div class="picker-help">请先选择二级组织</div>';
+    elements.warehouseTags.innerHTML = tagsHTML(state.warehouseIds, warehouseById, '全部配送中心（可按需选择）');
+    const warehouseNames = scope.actualWarehouseIds.map((id) => warehouseById.get(id).name).join('、');
+    elements.scopeSummary.innerHTML = state.orgIds.length
+      ? `<strong>当前适用范围：</strong>${escapeHTML(state.orgIds.map((id) => orgById.get(id).name).join('、'))} / ${escapeHTML(warehouseNames)}<span class="scope-note">${state.warehouseIds.length ? '仅适用已明确选择的配送中心门店' : '未指定配送中心，适用所选组织下全部配送中心门店'}；选品范围为这些配送中心门店可选商品的并集，按商品去重。</span>`
+      : '<span class="scope-warning">请先选择二级组织，确定适用范围后添加商品。</span>';
+  }
+
+  function renderProducts() {
+    const validIds = new Set(getScope().availableProducts.map((product) => product.id));
+    const invalidCount = state.productIds.filter((id) => !validIds.has(id)).length;
+    elements.productRows.innerHTML = state.productIds.map((id, index) => {
+      const product = productById.get(id);
+      const invalid = !validIds.has(id);
+      return `<tr data-product-id="${id}" draggable="true" tabindex="0" class="${invalid ? 'out-of-scope' : ''}" aria-label="第 ${index + 1} 位，${escapeHTML(product.name)}。按 Alt 加上下方向键调整顺序。"><td><span class="order-cell"><span class="drag-handle" aria-hidden="true">⠿</span><span>${index + 1}</span></span></td><td>${product.code}</td><td><span class="product-name">${product.name}</span>${invalid ? '<span class="scope-badge">超出当前范围</span>' : ''}</td><td>${product.spec}</td><td>${product.unit}</td><td><button type="button" class="action-link remove-link" data-remove-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
+    }).join('');
+    elements.productEmpty.hidden = state.productIds.length > 0;
+    elements.productCount.innerHTML = `共 <strong>${state.productIds.length}</strong> 个商品${invalidCount ? `<span class="scope-warning">，${invalidCount} 个超出当前范围，请移除后保存</span>` : ''}`;
+    elements.addProductsBtn.disabled = !state.orgIds.length;
+  }
+
+  function syncFieldsFromState() {
+    for (const name of ['configName', 'startDate', 'endDate', 'remark']) elements[name].value = state[name];
+    elements.longTerm.checked = state.longTerm;
+    elements.endDate.disabled = state.longTerm;
+  }
+
+  function readFields() {
+    for (const name of ['configName', 'startDate', 'endDate', 'remark']) state[name] = elements[name].value;
+    state.longTerm = elements.longTerm.checked;
+  }
+
+  function render() {
+    renderPickers();
+    renderProducts();
+    renderConfigList();
+  }
+
+  function renderConfigList() {
+    const organizationNames = state.orgIds.map((id) => orgById.get(id).name).join('、') || '未选择';
+    const warehouseNames = state.warehouseIds.length ? state.warehouseIds.map((id) => warehouseById.get(id).name).join('、') : '全部';
+    const dateLabel = (value) => value ? value.replace('T', ' ') : '未填写';
+    const dateRange = `${dateLabel(state.startDate)} 至 ${state.longTerm ? '长期有效' : dateLabel(state.endDate)}`;
+    elements.configListBody.innerHTML = `<tr><td>${escapeHTML(state.configName || '未命名配置')}</td><td>${escapeHTML(organizationNames)}</td><td>${escapeHTML(warehouseNames)}</td><td>${state.productIds.length}</td><td>${escapeHTML(dateRange)}</td><td><button id="editCurrentBtn" type="button" class="action-link">编辑</button></td></tr>`;
+  }
+
+  function handleScopeChange() {
+    render();
+    persistDraft();
+    if (state.productIds.some((id) => !getScope().availableProducts.some((product) => product.id === id))) {
+      showToast('范围已更新，超出当前范围的商品已保留并标记，请移除后保存。', 'error');
+    }
+  }
+
+  function filteredProducts() {
+    const query = activeQuery.trim().toLocaleLowerCase();
+    return getScope().availableProducts.filter((product) => !query || `${product.code} ${product.name}`.toLocaleLowerCase().includes(query));
+  }
+
+  function renderModal() {
+    const scope = getScope();
+    const available = filteredProducts();
+    const validIds = new Set(scope.availableProducts.map((product) => product.id));
+    const draftSet = new Set(modalDraftIds);
+    elements.availableRows.innerHTML = available.length
+      ? available.map((product) => `<tr><td><input type="checkbox" data-select-product="${product.id}" ${draftSet.has(product.id) ? 'checked' : ''} aria-label="选择${escapeHTML(product.name)}"></td><td>${product.code}</td><td title="${product.name}">${product.name}</td><td>${product.spec}</td><td>${product.unit}</td></tr>`).join('')
+      : '<tr class="empty-row"><td colspan="5">未找到符合条件的商品</td></tr>';
+    elements.selectedRows.innerHTML = modalDraftIds.length
+      ? modalDraftIds.map((id, index) => {
+        const product = productById.get(id);
+        return `<tr><td>${index + 1}</td><td>${product.code}</td><td title="${product.name}">${product.name}${!validIds.has(id) ? '<span class="scope-badge">超出当前范围</span>' : ''}</td><td><button type="button" class="action-link remove-link" data-unselect-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
+      }).join('')
+      : '<tr class="empty-row"><td colspan="4">请从左侧勾选商品</td></tr>';
+    elements.availableCount.textContent = `${available.length} 个`;
+    elements.selectedCount.textContent = `${modalDraftIds.length} 个`;
+    elements.checkedCount.textContent = `已选中 ${modalDraftIds.length} 条`;
+    elements.modalScopeSummary.innerHTML = `${escapeHTML(scope.actualWarehouseIds.map((id) => warehouseById.get(id).name).join('、'))} · 各仓共 ${scope.rawProductCount} 条，按商品去重后 ${scope.availableProducts.length} 件。<span>仅筛选可选商品，不改变配置适用范围；各门店仍按自身可选商品展示。</span>`;
+    const selectedVisibleCount = available.filter((product) => draftSet.has(product.id)).length;
+    elements.selectAllAvailable.checked = available.length > 0 && selectedVisibleCount === available.length;
+    elements.selectAllAvailable.indeterminate = selectedVisibleCount > 0 && selectedVisibleCount < available.length;
+    elements.selectAllAvailable.disabled = available.length === 0;
+  }
+
+  function openProductsModal() {
+    if (!state.orgIds.length) return showToast('请先选择二级组织。', 'error');
+    modalDraftIds = [...state.productIds];
+    activeQuery = '';
+    elements.productQuery.value = '';
+    renderModal();
+    elements.productModal.showModal();
+    elements.productQuery.focus();
+  }
+
+  function cancelProductsModal() {
+    modalDraftIds = [];
+    activeQuery = '';
+    elements.productModal.close();
+  }
+
+  function focusProduct(id) {
+    const row = elements.productRows.querySelector(`[data-product-id="${id}"]`);
+    if (row) row.focus();
+  }
+
+  function init() {
+    if (initialized) return;
+    const ids = ['configName', 'startDate', 'endDate', 'longTerm', 'remark', 'orgPicker', 'orgTags', 'orgOptions', 'warehousePicker', 'warehouseTags', 'warehouseOptions', 'scopeSummary', 'productRows', 'productEmpty', 'productCount', 'addProductsBtn', 'saveBtn', 'backBtn', 'toast', 'productModal', 'productQuery', 'queryBtn', 'resetQueryBtn', 'availableRows', 'selectedRows', 'availableCount', 'selectedCount', 'confirmProductsBtn', 'cancelProductsBtn', 'closeProductsBtn', 'selectAllAvailable', 'modalScopeSummary', 'checkedCount', 'ruleModal', 'ruleBtn', 'closeRuleBtn', 'ruleDoneBtn', 'detailView', 'listView', 'configListBody'];
+    elements = Object.fromEntries(ids.map((id) => [id, document.getElementById(id)]));
+    const missing = ids.filter((id) => !elements[id]);
+    if (missing.length) {
+      console.error('商品置顶原型缺少页面节点：', missing.join(', '));
+      return;
+    }
+    initialized = true;
+    loadSavedState();
+    syncFieldsFromState();
+    render();
+
+    for (const name of ['configName', 'startDate', 'endDate', 'remark']) {
+      elements[name].addEventListener('input', () => { readFields(); persistDraft(); });
+    }
+    elements.longTerm.addEventListener('change', () => {
+      readFields();
+      elements.endDate.disabled = state.longTerm;
+      persistDraft();
+    });
+    elements.orgOptions.addEventListener('change', (event) => {
+      const input = event.target.closest('[data-org-id]');
+      if (!input) return;
+      const previousWarehouses = [...state.warehouseIds];
+      state.orgIds = input.checked ? unique([...state.orgIds, input.dataset.orgId]) : state.orgIds.filter((id) => id !== input.dataset.orgId);
+      state.warehouseIds = computeScope(state.orgIds, state.warehouseIds).explicitWarehouseIds;
+      handleScopeChange();
+      if (previousWarehouses.length && !state.warehouseIds.length && state.orgIds.length) showToast('已移除不属于所选组织的配送中心；当前适用所选组织下全部配送中心。');
+    });
+    elements.warehouseOptions.addEventListener('change', (event) => {
+      const input = event.target.closest('[data-warehouse-id]');
+      if (!input) return;
+      state.warehouseIds = input.checked ? unique([...state.warehouseIds, input.dataset.warehouseId]) : state.warehouseIds.filter((id) => id !== input.dataset.warehouseId);
+      handleScopeChange();
+    });
+    document.addEventListener('click', (event) => {
+      for (const picker of [elements.orgPicker, elements.warehousePicker]) {
+        if (!picker.contains(event.target)) picker.open = false;
+      }
+    });
+    elements.addProductsBtn.addEventListener('click', openProductsModal);
+    elements.cancelProductsBtn.addEventListener('click', cancelProductsModal);
+    elements.closeProductsBtn.addEventListener('click', cancelProductsModal);
+    elements.productModal.addEventListener('cancel', () => { modalDraftIds = []; activeQuery = ''; });
+    elements.confirmProductsBtn.addEventListener('click', () => {
+      state.productIds = [...modalDraftIds];
+      persistDraft();
+      renderProducts();
+      elements.productModal.close();
+      showToast(`已更新 ${state.productIds.length} 个置顶商品，可拖动调整顺序。`);
+    });
+    const applyQuery = () => { activeQuery = elements.productQuery.value; renderModal(); };
+    elements.queryBtn.addEventListener('click', applyQuery);
+    elements.productQuery.addEventListener('keydown', (event) => { if (event.key === 'Enter') { event.preventDefault(); applyQuery(); } });
+    elements.resetQueryBtn.addEventListener('click', () => { activeQuery = ''; elements.productQuery.value = ''; renderModal(); });
+    elements.availableRows.addEventListener('change', (event) => {
+      const input = event.target.closest('[data-select-product]');
+      if (!input) return;
+      modalDraftIds = input.checked ? unique([...modalDraftIds, input.dataset.selectProduct]) : modalDraftIds.filter((id) => id !== input.dataset.selectProduct);
+      renderModal();
+    });
+    elements.selectAllAvailable.addEventListener('change', () => {
+      const visibleIds = filteredProducts().map((product) => product.id);
+      modalDraftIds = elements.selectAllAvailable.checked ? unique([...modalDraftIds, ...visibleIds]) : modalDraftIds.filter((id) => !visibleIds.includes(id));
+      renderModal();
+    });
+    elements.selectedRows.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-unselect-product]');
+      if (!button) return;
+      modalDraftIds = modalDraftIds.filter((id) => id !== button.dataset.unselectProduct);
+      renderModal();
+    });
+    elements.productRows.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-remove-product]');
+      if (!button) return;
+      state.productIds = state.productIds.filter((id) => id !== button.dataset.removeProduct);
+      persistDraft();
+      renderProducts();
+    });
+    elements.productRows.addEventListener('keydown', (event) => {
+      const row = event.target.closest('[data-product-id]');
+      if (!row || !event.altKey || !['ArrowUp', 'ArrowDown'].includes(event.key)) return;
+      event.preventDefault();
+      const index = state.productIds.indexOf(row.dataset.productId);
+      const nextIndex = index + (event.key === 'ArrowUp' ? -1 : 1);
+      if (nextIndex < 0 || nextIndex >= state.productIds.length) return;
+      const id = row.dataset.productId;
+      [state.productIds[index], state.productIds[nextIndex]] = [state.productIds[nextIndex], state.productIds[index]];
+      persistDraft();
+      renderProducts();
+      focusProduct(id);
+      showToast(`已将${productById.get(id).name}移至第 ${nextIndex + 1} 位。`);
+    });
+    elements.productRows.addEventListener('dragstart', (event) => {
+      const row = event.target.closest('[data-product-id]');
+      if (!row) return;
+      dragId = row.dataset.productId;
+      row.classList.add('is-dragging');
+      if (event.dataTransfer) { event.dataTransfer.effectAllowed = 'move'; event.dataTransfer.setData('text/plain', dragId); }
+    });
+    elements.productRows.addEventListener('dragover', (event) => {
+      const row = event.target.closest('[data-product-id]');
+      if (!row || !dragId || row.dataset.productId === dragId) return;
+      event.preventDefault();
+      if (event.dataTransfer) event.dataTransfer.dropEffect = 'move';
+      elements.productRows.querySelectorAll('.drag-over').forEach((item) => item.classList.remove('drag-over'));
+      row.classList.add('drag-over');
+    });
+    elements.productRows.addEventListener('drop', (event) => {
+      const row = event.target.closest('[data-product-id]');
+      if (!row || !dragId) return;
+      event.preventDefault();
+      const id = dragId;
+      const bounds = row.getBoundingClientRect();
+      state.productIds = moveItem(state.productIds, id, row.dataset.productId, event.clientY >= bounds.top + bounds.height / 2 ? 'after' : 'before');
+      dragId = null;
+      persistDraft();
+      renderProducts();
+      focusProduct(id);
+    });
+    elements.productRows.addEventListener('dragend', () => {
+      dragId = null;
+      elements.productRows.querySelectorAll('.is-dragging, .drag-over').forEach((row) => row.classList.remove('is-dragging', 'drag-over'));
+    });
+    elements.saveBtn.addEventListener('click', () => {
+      readFields();
+      const error = validateState(state);
+      if (error) {
+        showToast(error.message, 'error');
+        if (error.field === 'orgPicker') { elements.orgPicker.open = true; elements.orgPicker.querySelector('summary').focus(); }
+        else if (error.field === 'productRows') elements.productRows.querySelector('.out-of-scope')?.focus();
+        else elements[error.field]?.focus();
+        return;
+      }
+      persistDraft();
+      renderConfigList();
+      showToast('已保存，仅在当前浏览器演示，刷新后可继续查看。');
+    });
+    elements.backBtn.addEventListener('click', () => {
+      readFields();
+      renderConfigList();
+      elements.detailView.hidden = true;
+      elements.listView.hidden = false;
+    });
+    elements.configListBody.addEventListener('click', (event) => {
+      if (!event.target.closest('#editCurrentBtn')) return;
+      elements.listView.hidden = true;
+      elements.detailView.hidden = false;
+    });
+    elements.ruleBtn.addEventListener('click', () => elements.ruleModal.showModal());
+    elements.closeRuleBtn.addEventListener('click', () => elements.ruleModal.close());
+    elements.ruleDoneBtn.addEventListener('click', () => elements.ruleModal.close());
+  }
+
+  window.demoApp = Object.freeze({
+    reset() {
+      state = defaultState();
+      modalDraftIds = [];
+      activeQuery = '';
+      persistDraft();
+      if (initialized) { if (elements.productModal.open) elements.productModal.close(); syncFieldsFromState(); render(); }
+      return this.getState();
+    },
+    getState: () => JSON.parse(JSON.stringify(state)),
+    getAvailableProducts: () => getScope().availableProducts.map((product) => ({ ...product, warehouseIds: [...product.warehouseIds] })),
+    computeScope: (orgIds, warehouseIds) => computeScope(orgIds, warehouseIds),
+    test: Object.freeze({ computeScope, moveItem, normalizeState, validateState, defaultState }),
+    sampleData: Object.freeze({ organizations: ORGANIZATIONS, warehouses: WAREHOUSES, products: PRODUCTS }),
+  });
+
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
+  else init();
+})();
+
+</script>
+</body>
+</html>
