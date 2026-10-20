@@ -18,6 +18,8 @@
 
 .scope-requirement{font-size:12px;color:#7b8698;line-height:20px;margin:13px 5px 0}.picker.is-locked summary{background:#f5f6f8;border-color:#e2e5eb;cursor:not-allowed;box-shadow:none}.picker.is-locked .tag,.picker.is-locked .tag-overflow{background:#e9ecf1;color:#6f7785}.picker.is-locked .chevron{color:#bdc4cf}.picker.is-locked .picker-pop{display:none}.picker.is-locked summary:focus{outline:none}.picker.is-locked .tag-list{color:#929baa}.scope-summary{margin-top:5px}
 
+.main-table table{min-width:1080px}.main-table .frontend-categories{white-space:normal;line-height:1.6;overflow-wrap:anywhere;min-width:180px}.main-table .product-name{display:block;min-width:150px;white-space:normal;line-height:1.6;overflow-wrap:anywhere}
+
 </style>
 </head>
 <body>
@@ -66,9 +68,9 @@
       <div class="scope-summary" id="scopeSummary" aria-live="polite"></div>
 
       <h2 class="section-title product-section">置顶商品</h2>
-      <div class="product-toolbar"><button class="btn btn-primary" id="addProductsBtn"><span aria-hidden="true">＋</span> 添加商品</button><button class="btn btn-text" id="ruleBtn">排序规则</button><span class="toolbar-hint">拖动行首手柄调整商品顺序</span></div>
+      <div class="product-toolbar"><button class="btn btn-primary" id="addProductsBtn"><span aria-hidden="true">＋</span> 添加商品</button><button class="btn btn-text" id="ruleBtn">排序规则</button><span class="toolbar-hint">拖动行首手柄排序；列表支持左右滚动</span></div>
       <div class="table-wrap main-table">
-        <table aria-label="置顶商品列表"><colgroup><col style="width:100px"><col style="width:155px"><col><col style="width:185px"><col style="width:90px"><col style="width:100px"></colgroup><thead><tr><th scope="col">排序</th><th scope="col">商品代码</th><th scope="col">商品名称</th><th scope="col">规格</th><th scope="col">单位</th><th scope="col">操作</th></tr></thead><tbody id="productRows"></tbody></table>
+        <table aria-label="置顶商品列表"><colgroup><col style="width:80px"><col style="width:140px"><col style="width:220px"><col style="width:260px"><col style="width:170px"><col style="width:80px"><col style="width:90px"></colgroup><thead><tr><th scope="col">排序</th><th scope="col">商品代码</th><th scope="col">商品名称</th><th scope="col">前台分类</th><th scope="col">规格</th><th scope="col">单位</th><th scope="col">操作</th></tr></thead><tbody id="productRows"></tbody></table>
         <div class="empty-state" id="productEmpty"><svg viewBox="0 0 72 58" width="72" height="58" aria-hidden="true"><path d="M15 19h42v31H15z" fill="#f0f3f8" stroke="#d9dfeb"/><path d="m15 19 10-11h22l10 11M15 19l21 12 21-12M36 31v19" fill="none" stroke="#d9dfeb" stroke-width="2"/></svg><span>请添加商品</span></div>
       </div>
       <div class="table-footer"><span id="productCount">共 0 个商品</span><span>商品按列表顺序优先展示</span></div>
@@ -121,18 +123,18 @@
     { id: 'w4', name: '示例四仓', orgId: 'o2' },
   ];
   const PRODUCTS = [
-    { id: 'P1', code: '34020001', name: '奶香曲奇饼干', spec: '200g/袋', unit: '袋', warehouseIds: ['w1', 'w2', 'w4'] },
-    { id: 'P2', code: '34020002', name: '原味苏打饼干', spec: '300g/袋', unit: '袋', warehouseIds: ['w1', 'w3'] },
-    { id: 'P3', code: '34020003', name: '海盐巧克力', spec: '80g/盒', unit: '盒', warehouseIds: ['w1', 'w2'] },
-    { id: 'P4', code: '34020004', name: '草莓夹心棉花糖', spec: '100g/袋', unit: '袋', warehouseIds: ['w1'] },
-    { id: 'P5', code: '34020005', name: '香脆薯片', spec: '75g/罐', unit: '罐', warehouseIds: ['w1', 'w2', 'w3'] },
-    { id: 'P6', code: '34020006', name: '轻烘焙每日坚果', spec: '25g×7袋/盒', unit: '盒', warehouseIds: ['w2'] },
-    { id: 'P7', code: '34020007', name: '蜂蜜燕麦片', spec: '350g/袋', unit: '袋', warehouseIds: ['w2', 'w3'] },
-    { id: 'P8', code: '34020008', name: '青柠气泡水', spec: '330ml/罐', unit: '罐', warehouseIds: ['w3', 'w4'] },
-    { id: 'P9', code: '34020009', name: '白桃乌龙茶', spec: '500ml/瓶', unit: '瓶', warehouseIds: ['w3'] },
-    { id: 'P10', code: '34020010', name: '香辣小麻花', spec: '180g/袋', unit: '袋', warehouseIds: ['w4'] },
-    { id: 'P11', code: '34020011', name: '椰香蛋卷', spec: '150g/盒', unit: '盒', warehouseIds: ['w4'] },
-    { id: 'P12', code: '34020012', name: '冻干酸奶块', spec: '60g/袋', unit: '袋', warehouseIds: ['w4'] },
+    { id: 'P1', code: '34020001', name: '奶香曲奇饼干', frontCategories: ['饼干糕点', '主推活动'], spec: '200g/袋', unit: '袋', warehouseIds: ['w1', 'w2', 'w4'] },
+    { id: 'P2', code: '34020002', name: '原味苏打饼干', frontCategories: ['饼干糕点'], spec: '300g/袋', unit: '袋', warehouseIds: ['w1', 'w3'] },
+    { id: 'P3', code: '34020003', name: '海盐巧克力', frontCategories: ['巧克力', '主推活动'], spec: '80g/盒', unit: '盒', warehouseIds: ['w1', 'w2'] },
+    { id: 'P4', code: '34020004', name: '草莓夹心棉花糖', frontCategories: ['糖果', '主推活动'], spec: '100g/袋', unit: '袋', warehouseIds: ['w1'] },
+    { id: 'P5', code: '34020005', name: '香脆薯片', frontCategories: ['膨化食品'], spec: '75g/罐', unit: '罐', warehouseIds: ['w1', 'w2', 'w3'] },
+    { id: 'P6', code: '34020006', name: '轻烘焙每日坚果', frontCategories: ['坚果炒货', '主推活动'], spec: '25g×7袋/盒', unit: '盒', warehouseIds: ['w2'] },
+    { id: 'P7', code: '34020007', name: '蜂蜜燕麦片', frontCategories: ['冲调粉/麦片'], spec: '350g/袋', unit: '袋', warehouseIds: ['w2', 'w3'] },
+    { id: 'P8', code: '34020008', name: '青柠气泡水', frontCategories: ['水饮', '清爽饮品活动'], spec: '330ml/罐', unit: '罐', warehouseIds: ['w3', 'w4'] },
+    { id: 'P9', code: '34020009', name: '白桃乌龙茶', frontCategories: ['茶饮', '清爽饮品活动'], spec: '500ml/瓶', unit: '瓶', warehouseIds: ['w3'] },
+    { id: 'P10', code: '34020010', name: '香辣小麻花', frontCategories: ['饼干糕点'], spec: '180g/袋', unit: '袋', warehouseIds: ['w4'] },
+    { id: 'P11', code: '34020011', name: '椰香蛋卷', frontCategories: ['饼干糕点'], spec: '150g/盒', unit: '盒', warehouseIds: ['w4'] },
+    { id: 'P12', code: '34020012', name: '冻干酸奶块', frontCategories: [], spec: '60g/袋', unit: '袋', warehouseIds: ['w4'] },
   ];
 
   const STORAGE_KEY = 'xlb-product-pin-prototype-v3-20261019';
@@ -284,7 +286,8 @@
   function renderProducts() {
     elements.productRows.innerHTML = state.productIds.map((id, index) => {
       const product = productById.get(id);
-      return `<tr data-product-id="${id}" draggable="true" tabindex="0" aria-label="第 ${index + 1} 位，${escapeHTML(product.name)}。按 Alt 加上下方向键调整顺序。"><td><span class="order-cell"><span class="drag-handle" aria-hidden="true">⠿</span><span>${index + 1}</span></span></td><td>${product.code}</td><td><span class="product-name">${product.name}</span></td><td>${product.spec}</td><td>${product.unit}</td><td><button type="button" class="action-link remove-link" data-remove-product="${id}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
+      const categoriesHTML = product.frontCategories?.length ? product.frontCategories.map((category) => escapeHTML(category)).join('<br>') : '—';
+      return `<tr data-product-id="${escapeHTML(id)}" draggable="true" tabindex="0" aria-label="第 ${index + 1} 位，${escapeHTML(product.name)}。按 Alt 加上下方向键调整顺序。"><td><span class="order-cell"><span class="drag-handle" aria-hidden="true">⠿</span><span>${index + 1}</span></span></td><td>${escapeHTML(product.code)}</td><td><span class="product-name">${escapeHTML(product.name)}</span></td><td class="frontend-categories">${categoriesHTML}</td><td>${escapeHTML(product.spec)}</td><td>${escapeHTML(product.unit)}</td><td><button type="button" class="action-link remove-link" data-remove-product="${escapeHTML(id)}" aria-label="移除${escapeHTML(product.name)}">移除</button></td></tr>`;
     }).join('');
     elements.productEmpty.hidden = state.productIds.length > 0;
     elements.productCount.innerHTML = `共 <strong>${state.productIds.length}</strong> 个商品`;
